@@ -1,0 +1,46 @@
+{
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "/css",
+      "savePathReplacementPairs": null
+    }
+  ],
+  "liveSassCompile.settings.generateMap": true,
+  "liveSassCompile.settings.autoprefix": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "liveSassCompile.settings.includeItems": [
+    "/styles.scss"
+  ],
+  "liveSassCompile.settings.excludeList": [
+    "**/node_modules/**",
+    ".vscode/**"
+  ],
+  "liveSassCompile.settings.watchOnLaunch": false,
+  "liveSassCompile.settings.forceBaseDirectory": "/",
+  "liveSassCompile.settings.partialsList": [],
+  "liveSassCompile.settings.includePaths": [],
+  "liveSassCompile.settings.exportOnSave": true,
+  "liveSassCompile.settings.exportOnSavePath": null,
+  "liveSassCompile.settings.compileOnWatch": true,
+  "projectManager.projectsLocation": "~/Documents",
+  "projectManager.sortList": "Name",
+  "projectManager.includeGitRepositories": true,
+  "projectManager.includeWorkspaceFolder": true,
+  "projectManager.includeWorkspaceFolderName": true,
+  "projectManager.includeWorkspaceFolderPath": true,
+  "projectManager.includeWorkspaceFolderGitStatus": true,
+  "files.associations": {
+    "*.scss": "scss",
+    "*.sass": "sass"
+  },
+  "emmet.includeLanguages": {
+    "scss": "css"
+  },
+  "css.validate": false,
+  "scss.validate": true,
+  "sass.validate": true
+}

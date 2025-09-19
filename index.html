@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>行政サイト風 - アクセシビリティ対応</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="normal normal-font">
+    <header>
+      <!-- トップバー -->
+      <div class="header-top">
+        <div class="header-container">
+          <!-- 左側：ロゴとサイト名 -->
+          <div class="header-left">
+            <img
+              src="images/logo.gif"
+              alt="山武郡市広域水道企業団様　機能版　サンプルサイト"
+              class="header-logo"
+            />
+            <h1>山武郡市広域水道企業団</h1>
+          </div>
+
+          <!-- 右側：検索とユーティリティボタン -->
+          <div class="header-right">
+            <!-- 検索ボックス -->
+            <div class="search-area">
+              <form
+                action="https://www.google.com/search"
+                method="get"
+                target="_blank"
+              >
+                <input
+                  type="text"
+                  name="q"
+                  placeholder="検索"
+                  class="search-input"
+                />
+                <input type="hidden" name="sitesearch" value="example.com" />
+                <button type="submit" class="search-btn">🔍</button>
+              </form>
+            </div>
+
+            <!-- 設定パネル（ヘッダー内） -->
+            <div class="header-settings">
+              <!-- 文字サイズ -->
+              <div class="setting-group">
+                <label>文字サイズ</label>
+                <select id="fontSizeSelect" onchange="setFontSize(this.value)">
+                  <option value="normal">標準</option>
+                  <option value="large">大</option>
+                  <option value="xlarge">特大</option>
+                </select>
+              </div>
+
+              <!-- 背景色 -->
+              <div class="setting-group">
+                <label>背景色</label>
+                <select id="themeSelect" onchange="setTheme(this.value)">
+                  <option value="normal">通常</option>
+                  <option value="dark">黒</option>
+                  <option value="blue">青</option>
+                </select>
+              </div>
+
+              <!-- 言語 -->
+              <div class="setting-group">
+                <label>言語</label>
+                <select
+                  id="languageSelect"
+                  onchange="changeLanguage(this.value)"
+                >
+                  <option value="ja">日本語</option>
+                  <option value="en">英語</option>
+                  <option value="zh-CN">中国語</option>
+                  <option value="ko">韓国語</option>
+                  <option value="fr">フランス語</option>
+                  <option value="es">スペイン語</option>
+                </select>
+              </div>
+
+              <!-- 音声読み上げ -->
+              <div class="setting-group">
+                <button onclick="readAll()">読み上げ</button>
+                <button onclick="stopSpeaking()">停止</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- メインナビゲーション -->
+      <nav class="main-nav">
+        <!-- ハンバーガーメニューボタン -->
+        <button class="hamburger-btn" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-container">
+          <!-- デスクトップナビ -->
+          <ul class="nav-list desktop-nav">
+            <li class="nav-item">
+              <a href="#" class="nav-link"
+                >ホーム <span class="arrow">▶</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link"
+                >お問い合わせ窓口 <span class="arrow">▶</span></a
+              >
+              <div class="mega-menu">
+                <div class="mega-menu-content">
+                  <div class="mega-category">
+                    <h3>お問い合わせ窓口</h3>
+                    <div class="sub-categories">
+                      <div class="sub-category">
+                        <div class="sub-category-title">窓口案内</div>
+                        <div class="sub-category-items">
+                          <a href="#">お客様センター</a>
+                          <a href="#">本庁舎</a>
+                          <a href="#">各科窓口</a>
+                          <a href="#">お問い合わせ</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link"
+                >企業団情報 <span class="arrow">▶</span></a
+              >
+              <div class="mega-menu">
+                <div class="mega-menu-content">
+                  <div class="mega-category">
+                    <h3>企業団情報</h3>
+                    <div class="sub-categories">
+                      <div class="sub-category">
+                        <div class="sub-category-title">企業団について</div>
+                        <div class="sub-category-items">
+                          <a href="#">企業長からの挨拶</a>
+                          <a href="#">企業団設立の経緯</a>
+                          <a href="#">組織図</a>
+                          <a href="#">給水区域</a>
+                        </div>
+                      </div>
+                      <div class="sub-category">
+                        <div class="sub-category-title">情報公開・資料</div>
+                        <div class="sub-category-items">
+                          <a href="#">概要</a>
+                          <a href="#">水道事業年報</a>
+                          <a href="#">財務・経営</a>
+                          <a href="#">組織・運営</a>
+                          <a href="#">情報公開・法制度</a>
+                          <a href="#">その他</a>
+                        </div>
+                      </div>
+                      <div class="sub-category">
+                        <div class="sub-category-title">中長期経営プラン</div>
+                        <div class="sub-category-items">
+                          <a href="#">2016</a>
+                          <a href="#">2026</a>
+                        </div>
+                      </div>
+                      <div class="sub-category">
+                        <div class="sub-category-title">広報・市民交流</div>
+                        <div class="sub-category-items">
+                          <a href="#">パブリックコメント</a>
+                          <a href="#">特定事業主行動計画</a>
+                          <a href="#">障害者活躍推進計画</a>
+                          <a href="#">水道出前講座</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link"
+                >お客様へ <span class="arrow">▶</span></a
+              >
+              <div class="mega-menu">
+                <div class="mega-menu-content">
+                  <div class="mega-category">
+                    <h3>お客様へ</h3>
+                    <div class="sub-categories">
+                      <div class="sub-category">
+                        <div class="sub-category-title">くらしと水道</div>
+                        <div class="sub-category-items">
+                          <a href="#">水道のトラブル</a>
+                          <a href="#">水道メーター</a>
+                          <a href="#">漏水</a>
+                          <a href="#">蛇口の水漏れ</a>
+                          <a href="#">凍結防止</a>
+                          <a href="#">貯水槽水道</a>
+                          <a href="#">貯水槽給水管への誤接続</a>
+                          <a href="#">給水装置</a>
+                          <a href="#">水道水の水質</a>
+                        </div>
+                      </div>
+                      <div class="sub-category">
+                        <div class="sub-category-title">水道料金・届出</div>
+                        <div class="sub-category-items">
+                          <a href="#">料金</a>
+                          <a href="#">検針・請求</a>
+                          <a href="#">お支払い</a>
+                          <a href="#">お引越しと水道</a>
+                          <a href="#">助成制度</a>
+                          <a href="#">にせ水道局員や水道局を装ったメール</a>
+                        </div>
+                      </div>
+                      <div class="sub-category">
+                        <div class="sub-category-title">災害に備えて</div>
+                        <div class="sub-category-items">
+                          <a href="#">拠点給水所</a>
+                          <a href="#">水道施設の復旧体制の強化</a>
+                          <a href="#">水道施設耐震化向上</a>
+                          <a href="#">水道水の汲み置き</a>
+                          <a href="#">ご自宅から避難される際は</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link"
+                >事業者のみなさまへ <span class="arrow">▶</span></a
+              >
+              <div class="mega-menu">
+                <div class="mega-menu-content">
+                  <div class="mega-category">
+                    <h3>事業者のみなさまへ</h3>
+                    <div class="sub-categories">
+                      <div class="sub-category">
+                        <div class="sub-category-title">入札・契約</div>
+                        <div class="sub-category-items two-column">
+                          <a href="#">入札参加資格・登録関係</a>
+                          <a href="#">入札制度・手続き関係</a>
+                          <a href="#">価格・情報公表制度</a>
+                          <a href="#">契約・支払い手続き</a>
+                          <a href="#">工事施工・技術管理</a>
+                          <a href="#">工事検査・評価制度</a>
+                          <a href="#">コンプライアンス・法令遵守</a>
+                          <a href="#">ペナルティ・制裁措置</a>
+                          <a href="#">特別制度・協定</a>
+                          <a href="#">制度改正・変更通知</a>
+                        </div>
+                      </div>
+                      <div class="sub-category">
+                        <div class="sub-category-title">
+                          一般競争入札の広告及び結果
+                        </div>
+                        <div class="sub-category-items">
+                          <a href="#">注意事項</a>
+                          <a href="#">書式一覧</a>
+                          <a href="#">建設工事入札公告・入札結果</a>
+                          <a href="#"
+                            >測量･コンサルタント業務入札公告・入札結果</a
+                          >
+                          <a href="#">物品･委託等入札公告・入札結果</a>
+                          <a href="#">指名競争入札公告・入札結果</a>
+                          <a href="#">プロポーザル公告・入札結果</a>
+                        </div>
+                      </div>
+                      <div class="sub-category">
+                        <div class="sub-category-title">
+                          公共工事に関する契約内容等の公表
+                        </div>
+                        <div class="sub-category-items">
+                          <a href="#">注意事項</a>
+                          <a href="#"
+                            >注見通しの公表（法第７条、政令第５条関係）</a
+                          >
+                          <a href="#"
+                            >契約内容（法第８条、政令第７条第２項及び第３項関係）</a
+                          >
+                          <a href="#">変更契約内容</a>
+                        </div>
+                      </div>
+                      <div class="sub-category">
+                        <div class="sub-category-title">
+                          建設工事等入札参加資格審査
+                        </div>
+                        <div class="sub-category-items">
+                          <a href="#"
+                            >建設工事等入札参加業者資格審査申請事項変更等の届出に関する要領</a
+                          >
+                          <a href="#"
+                            >建設工事等入札参加業者資格審査申請追加受付要領</a
+                          >
+                          <a href="#"
+                            >建設工事等入札参加業者資格審査申請受付要領</a
+                          >
+                          <a href="#">その他</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- モバイルナビ -->
+          <div class="mobile-nav">
+            <div class="mobile-nav-item">
+              <h3>ホーム</h3>
+            </div>
+
+            <div class="mobile-nav-item">
+              <h3>お問い合わせ窓口</h3>
+              <ul class="mobile-sub-menu">
+                <li><a href="#">お客様センター</a></li>
+                <li><a href="#">本庁舎</a></li>
+                <li><a href="#">各科窓口</a></li>
+                <li><a href="#">お問い合わせ</a></li>
+              </ul>
+            </div>
+
+            <div class="mobile-nav-item">
+              <h3>企業団情報</h3>
+              <ul class="mobile-sub-menu">
+                <li><a href="#">企業長からの挨拶</a></li>
+                <li><a href="#">企業団設立の経緯</a></li>
+                <li><a href="#">組織図</a></li>
+                <li><a href="#">給水区域</a></li>
+                <li><a href="#">概要</a></li>
+                <li><a href="#">水道事業年報</a></li>
+                <li><a href="#">財務・経営</a></li>
+                <li><a href="#">組織・運営</a></li>
+                <li><a href="#">情報公開・法制度</a></li>
+                <li><a href="#">その他</a></li>
+                <li><a href="#">2016</a></li>
+                <li><a href="#">2026</a></li>
+                <li><a href="#">パブリックコメント</a></li>
+                <li><a href="#">特定事業主行動計画</a></li>
+                <li><a href="#">障害者活躍推進計画</a></li>
+                <li><a href="#">水道出前講座</a></li>
+              </ul>
+            </div>
+
+            <div class="mobile-nav-item">
+              <h3>お客様へ</h3>
+              <ul class="mobile-sub-menu">
+                <li><a href="#">水道のトラブル</a></li>
+                <li><a href="#">水道メーター</a></li>
+                <li><a href="#">漏水</a></li>
+                <li><a href="#">蛇口の水漏れ</a></li>
+                <li><a href="#">凍結防止</a></li>
+                <li><a href="#">貯水槽水道</a></li>
+                <li><a href="#">貯水槽給水管への誤接続</a></li>
+                <li><a href="#">給水装置</a></li>
+                <li><a href="#">水道水の水質</a></li>
+                <li><a href="#">料金</a></li>
+                <li><a href="#">検針・請求</a></li>
+                <li><a href="#">お支払い</a></li>
+                <li><a href="#">お引越しと水道</a></li>
+                <li><a href="#">助成制度</a></li>
+                <li><a href="#">にせ水道局員や水道局を装ったメール</a></li>
+                <li><a href="#">拠点給水所</a></li>
+                <li><a href="#">水道施設の復旧体制の強化</a></li>
+                <li><a href="#">水道施設耐震化向上</a></li>
+                <li><a href="#">水道水の汲み置き</a></li>
+                <li><a href="#">ご自宅から避難される際は</a></li>
+              </ul>
+            </div>
+
+            <div class="mobile-nav-item">
+              <h3>事業者のみなさまへ</h3>
+              <ul class="mobile-sub-menu">
+                <li><a href="#">入札参加資格・登録関係</a></li>
+                <li><a href="#">入札制度・手続き関係</a></li>
+                <li><a href="#">価格・情報公表制度</a></li>
+                <li><a href="#">契約・支払い手続き</a></li>
+                <li><a href="#">工事施工・技術管理</a></li>
+                <li><a href="#">工事検査・評価制度</a></li>
+                <li><a href="#">コンプライアンス・法令遵守</a></li>
+                <li><a href="#">ペナルティ・制裁措置</a></li>
+                <li><a href="#">特別制度・協定</a></li>
+                <li><a href="#">制度改正・変更通知</a></li>
+                <li><a href="#">注意事項</a></li>
+                <li><a href="#">書式一覧</a></li>
+                <li><a href="#">建設工事入札公告・入札結果</a></li>
+                <li>
+                  <a href="#">測量･コンサルタント業務入札公告・入札結果</a>
+                </li>
+                <li><a href="#">物品･委託等入札公告・入札結果</a></li>
+                <li><a href="#">指名競争入札公告・入札結果</a></li>
+                <li><a href="#">プロポーザル公告・入札結果</a></li>
+                <li>
+                  <a href="#"
+                    >建設工事等入札参加業者資格審査申請事項変更等の届出に関する要領</a
+                  >
+                </li>
+                <li>
+                  <a href="#">建設工事等入札参加業者資格審査申請追加受付要領</a>
+                </li>
+                <li>
+                  <a href="#">建設工事等入札参加業者資格審査申請受付要領</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Google翻訳ウィジェット（非表示） -->
+      <div id="google_translate_element" style="display: none"></div>
+    </header>
+
+    <main>
+      <section>
+        <h2>お客様へ</h2>
+        <p>
+          山武水道企業団は、地域の皆さまに寄り添い、水に関わる安全で快適な暮らしを支えるために活動しています。
+        </p>
+      </section>
+
+      <section>
+        <h2>重要なお知らせ</h2>
+        <ul>
+          <li>2025年10月1日から集金ルールが一部変更されます。</li>
+          <li>新規登録は1階で受け付けています。</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 山武郡市広域水道企業団サンプルサイト</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>音声読み上げサンプル</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 2rem;
+      }
+      textarea {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 1rem;
+      }
+      button {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>音声読み上げサンプル</h1>
+    <p>下のテキストを入力して「読み上げ」ボタンを押してください。</p>
+
+    <textarea id="text">
+こんにちは！このサイトに音声読み上げ機能がつきました。</textarea
+    >
+    <br />
+    <button onclick="speakText()">読み上げ</button>
+    <button onclick="stopSpeaking()">停止</button>
+
+    <script>
+      function speakText() {
+        const text = document.getElementById("text").value;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "ja-JP"; // 日本語
+        speechSynthesis.speak(utterance);
+      }
+
+      function stopSpeaking() {
+        speechSynthesis.cancel();
+      }
+    </script>
+  </body>
+</html>

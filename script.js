@@ -1,0 +1,148 @@
+// ===== 背景色＋文字色切り替え =====
+function setTheme(theme) {
+  document.body.classList.remove("normal", "dark", "blue");
+  document.body.classList.add(theme);
+  // 選択状態を更新
+  document.getElementById("themeSelect").value = theme;
+}
+
+// ===== 文字サイズ切り替え =====
+function setFontSize(size) {
+  document.body.classList.remove(
+    "normal-font",
+    "large-font",
+    "xlarge-font"
+  );
+  if (size === "normal") document.body.classList.add("normal-font");
+  if (size === "large") document.body.classList.add("large-font");
+  if (size === "xlarge") document.body.classList.add("xlarge-font");
+  // 選択状態を更新
+  document.getElementById("fontSizeSelect").value = size;
+}
+
+// ===== 言語切り替え =====
+function changeLanguage(lang) {
+  if (lang === "ja") {
+    // 日本語の場合は翻訳をリセット
+    if (window.google && window.google.translate) {
+      const translateElement = document.querySelector(".goog-te-combo");
+      if (translateElement) {
+        translateElement.value = "";
+        translateElement.dispatchEvent(new Event("change"));
+      }
+    }
+  } else {
+    // 他の言語の場合はGoogle翻訳を使用
+    if (window.google && window.google.translate) {
+      const translateElement = document.querySelector(".goog-te-combo");
+      if (translateElement) {
+        translateElement.value = lang;
+        translateElement.dispatchEvent(new Event("change"));
+      }
+    }
+  }
+  // 選択状態を更新
+  document.getElementById("languageSelect").value = lang;
+}
+
+// ===== 音声読み上げ =====
+function readAll() {
+  const elements = document.querySelectorAll("h1, h2, p, li");
+  let text = "";
+  elements.forEach((el) => {
+    text += el.innerText + "。";
+  });
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "ja-JP";
+  speechSynthesis.speak(utterance);
+}
+
+function stopSpeaking() {
+  speechSynthesis.cancel();
+}
+
+// ===== Google翻訳ウィジェット =====
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    { pageLanguage: "ja", includedLanguages: "ja,en,zh-CN,ko,fr,es" },
+    "google_translate_element"
+  );
+}
+
+// ===== メガメニュー制御 =====
+function initMegaMenu() {
+  const navItems = document.querySelectorAll(".nav-item");
+
+  navItems.forEach((item) => {
+    const megaMenu = item.querySelector(".mega-menu");
+    if (megaMenu) {
+      // ホバー時の表示制御
+      item.addEventListener("mouseenter", function () {
+        // 他のメガメニューを非表示
+        document.querySelectorAll(".mega-menu").forEach((menu) => {
+          menu.classList.remove("active");
+        });
+        
+        // メガメニューの位置を調整
+        const mainNav = document.querySelector(".main-nav");
+        const navRect = mainNav.getBoundingClientRect();
+        megaMenu.style.top = (navRect.bottom + window.scrollY) + "px";
+        
+        // 現在のメガメニューを表示
+        megaMenu.classList.add("active");
+      });
+
+      // メガメニュー内でのマウス移動時は表示を維持
+      megaMenu.addEventListener("mouseenter", function () {
+        megaMenu.classList.add("active");
+      });
+
+      // メガメニューから離れた時の非表示
+      item.addEventListener("mouseleave", function () {
+        setTimeout(() => {
+          megaMenu.classList.remove("active");
+        }, 200);
+      });
+    }
+  });
+
+  // メガメニュー外をクリックした時の非表示
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".main-nav")) {
+      document.querySelectorAll(".mega-menu").forEach((menu) => {
+        menu.classList.remove("active");
+      });
+    }
+  });
+}
+
+// ===== ページ読み込み時の初期化 =====
+window.addEventListener("load", function () {
+  // 初期状態を設定
+  document.getElementById("themeSelect").value = "normal";
+  document.getElementById("fontSizeSelect").value = "normal";
+  document.getElementById("languageSelect").value = "ja";
+
+  // メガメニューを初期化
+  initMegaMenu();
+});
+
+// ===== モバイルメニュー制御 =====
+function toggleMobileMenu() {
+  const hamburgerBtn = document.querySelector('.hamburger-btn');
+  const mobileNav = document.querySelector('.mobile-nav');
+  
+  hamburgerBtn.classList.toggle('active');
+  mobileNav.classList.toggle('active');
+}
+
+// モバイルメニュー外をクリックした時の非表示
+document.addEventListener('click', function(e) {
+  const hamburgerBtn = document.querySelector('.hamburger-btn');
+  const mobileNav = document.querySelector('.mobile-nav');
+  
+  if (!e.target.closest('.hamburger-btn') && !e.target.closest('.mobile-nav')) {
+    hamburgerBtn.classList.remove('active');
+    mobileNav.classList.remove('active');
+  }
+});

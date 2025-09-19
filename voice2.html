@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>コーポレートサイト風 - 音声読み上げサンプル</title>
+    <style>
+      body {
+        font-family: "Hiragino Sans", sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+      header {
+        background: #003366;
+        color: white;
+        padding: 1rem 2rem;
+      }
+      header h1 {
+        margin: 0;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        gap: 1.5rem;
+        margin: 0;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+      }
+      main {
+        padding: 2rem;
+      }
+      section {
+        margin-bottom: 2rem;
+      }
+      footer {
+        background: #f2f2f2;
+        text-align: center;
+        padding: 1rem;
+      }
+      button {
+        padding: 0.6rem 1.2rem;
+        margin-top: 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>サンプル株式会社</h1>
+      <nav>
+        <ul>
+          <li><a href="#">会社概要</a></li>
+          <li><a href="#">サービス</a></li>
+          <li><a href="#">採用情報</a></li>
+          <li><a href="#">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>私たちの使命</h2>
+        <p>
+          サンプル株式会社は、最新のテクノロジーを活用し、社会に新しい価値を提供しています。<br />
+          お客様と共に成長し、持続可能な未来を創造することを目指します。
+        </p>
+      </section>
+
+      <section>
+        <h2>主なサービス</h2>
+        <ul>
+          <li>Webサイト制作・運用</li>
+          <li>クラウドソリューション導入支援</li>
+          <li>データ分析とコンサルティング</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>お問い合わせ</h2>
+        <p>ご相談やご質問がありましたら、お気軽にお問い合わせください。</p>
+      </section>
+
+      <button onclick="readAll()">このページを読み上げる</button>
+      <button onclick="stopSpeaking()">停止</button>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 サンプル株式会社</p>
+    </footer>
+
+    <script>
+      function readAll() {
+        // h1, h2, p, li のテキストをまとめる
+        const elements = document.querySelectorAll("h1, h2, p, li");
+        let text = "";
+        elements.forEach((el) => {
+          text += el.innerText + "。";
+        });
+
+        // 音声合成
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "ja-JP";
+        speechSynthesis.speak(utterance);
+      }
+
+      function stopSpeaking() {
+        speechSynthesis.cancel();
+      }
+    </script>
+  </body>
+</html>
