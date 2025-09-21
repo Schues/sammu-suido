@@ -36,7 +36,7 @@ $util-btn-hover: #004499;
 
 // ベーススタイル
 body {
-  font-family: "Hiragino Sans", sans-serif;
+  font-family: 'Hiragino Sans', sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.8;
@@ -244,7 +244,9 @@ header {
   overflow: hidden;
 
   @media (max-width: 767px) {
-    display: none;
+    .desktop-nav {
+      display: none;
+    }
   }
 }
 
@@ -263,6 +265,7 @@ header {
   z-index: 1001;
 
   span {
+    display: block;
     width: 25px;
     height: 3px;
     background: $nav-bg;
@@ -283,7 +286,7 @@ header {
   }
 
   @media (max-width: 767px) {
-    display: block;
+    display: flex;
   }
 
   // @media (min-width: 768px) {
@@ -456,8 +459,8 @@ body {
 // モバイルナビゲーション
 .mobile-nav {
   display: none;
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: 80px;
   left: 0;
   right: 0;
   background: white;
@@ -469,12 +472,6 @@ body {
 
   &.active {
     display: block;
-  }
-
-  @media (max-width: 768px) {
-    &.active {
-      display: block;
-    }
   }
 }
 
@@ -490,9 +487,25 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     &:hover {
       background: #e9ecef;
+    }
+
+    .accordion-toggle {
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+      user-select: none;
+    }
+  }
+
+  &.active {
+    h3 .accordion-toggle {
+      transform: rotate(45deg);
     }
   }
 
@@ -501,27 +514,34 @@ body {
     padding: 0;
     margin: 0;
     background: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
 
-    li {
-      border-bottom: 1px solid #f0f0f0;
+  &.active .mobile-sub-menu {
+    max-height: 500px;
+  }
 
-      &:last-child {
-        border-bottom: none;
-      }
+  .mobile-sub-menu li {
+    border-bottom: 1px solid #f0f0f0;
 
-      a {
-        display: block;
-        padding: 0.75rem 2.5rem;
-        color: #666;
-        text-decoration: none;
-        font-size: 0.9rem;
-        transition: all 0.2s;
+    &:last-child {
+      border-bottom: none;
+    }
 
-        &:hover {
-          background: #f8f9fa;
-          color: $primary-color;
-          padding-left: 3rem;
-        }
+    a {
+      display: block;
+      padding: 0.75rem 2.5rem;
+      color: #666;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+
+      &:hover {
+        background: #f8f9fa;
+        color: $primary-color;
+        padding-left: 3rem;
       }
     }
   }

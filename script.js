@@ -1,59 +1,55 @@
 // ===== 背景色＋文字色切り替え =====
 function setTheme(theme) {
-  document.body.classList.remove("normal", "dark", "blue");
+  document.body.classList.remove('normal', 'dark', 'blue');
   document.body.classList.add(theme);
   // 選択状態を更新
-  document.getElementById("themeSelect").value = theme;
+  document.getElementById('themeSelect').value = theme;
 }
 
 // ===== 文字サイズ切り替え =====
 function setFontSize(size) {
-  document.body.classList.remove(
-    "normal-font",
-    "large-font",
-    "xlarge-font"
-  );
-  if (size === "normal") document.body.classList.add("normal-font");
-  if (size === "large") document.body.classList.add("large-font");
-  if (size === "xlarge") document.body.classList.add("xlarge-font");
+  document.body.classList.remove('normal-font', 'large-font', 'xlarge-font');
+  if (size === 'normal') document.body.classList.add('normal-font');
+  if (size === 'large') document.body.classList.add('large-font');
+  if (size === 'xlarge') document.body.classList.add('xlarge-font');
   // 選択状態を更新
-  document.getElementById("fontSizeSelect").value = size;
+  document.getElementById('fontSizeSelect').value = size;
 }
 
 // ===== 言語切り替え =====
 function changeLanguage(lang) {
-  if (lang === "ja") {
+  if (lang === 'ja') {
     // 日本語の場合は翻訳をリセット
     if (window.google && window.google.translate) {
-      const translateElement = document.querySelector(".goog-te-combo");
+      const translateElement = document.querySelector('.goog-te-combo');
       if (translateElement) {
-        translateElement.value = "";
-        translateElement.dispatchEvent(new Event("change"));
+        translateElement.value = '';
+        translateElement.dispatchEvent(new Event('change'));
       }
     }
   } else {
     // 他の言語の場合はGoogle翻訳を使用
     if (window.google && window.google.translate) {
-      const translateElement = document.querySelector(".goog-te-combo");
+      const translateElement = document.querySelector('.goog-te-combo');
       if (translateElement) {
         translateElement.value = lang;
-        translateElement.dispatchEvent(new Event("change"));
+        translateElement.dispatchEvent(new Event('change'));
       }
     }
   }
   // 選択状態を更新
-  document.getElementById("languageSelect").value = lang;
+  document.getElementById('languageSelect').value = lang;
 }
 
 // ===== 音声読み上げ =====
 function readAll() {
-  const elements = document.querySelectorAll("h1, h2, p, li");
-  let text = "";
-  elements.forEach((el) => {
-    text += el.innerText + "。";
+  const elements = document.querySelectorAll('h1, h2, p, li');
+  let text = '';
+  elements.forEach(el => {
+    text += el.innerText + '。';
   });
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "ja-JP";
+  utterance.lang = 'ja-JP';
   speechSynthesis.speak(utterance);
 }
 
@@ -64,83 +60,119 @@ function stopSpeaking() {
 // ===== Google翻訳ウィジェット =====
 function googleTranslateElementInit() {
   new google.translate.TranslateElement(
-    { pageLanguage: "ja", includedLanguages: "ja,en,zh-CN,ko,fr,es" },
-    "google_translate_element"
+    { pageLanguage: 'ja', includedLanguages: 'ja,en,zh-CN,ko,fr,es' },
+    'google_translate_element'
   );
 }
 
 // ===== メガメニュー制御 =====
 function initMegaMenu() {
-  const navItems = document.querySelectorAll(".nav-item");
+  const navItems = document.querySelectorAll('.nav-item');
 
-  navItems.forEach((item) => {
-    const megaMenu = item.querySelector(".mega-menu");
+  navItems.forEach(item => {
+    const megaMenu = item.querySelector('.mega-menu');
     if (megaMenu) {
       // ホバー時の表示制御
-      item.addEventListener("mouseenter", function () {
+      item.addEventListener('mouseenter', function () {
         // 他のメガメニューを非表示
-        document.querySelectorAll(".mega-menu").forEach((menu) => {
-          menu.classList.remove("active");
+        document.querySelectorAll('.mega-menu').forEach(menu => {
+          menu.classList.remove('active');
         });
-        
+
         // メガメニューの位置を調整
-        const mainNav = document.querySelector(".main-nav");
+        const mainNav = document.querySelector('.main-nav');
         const navRect = mainNav.getBoundingClientRect();
-        megaMenu.style.top = (navRect.bottom + window.scrollY) + "px";
-        
+        megaMenu.style.top = navRect.bottom + window.scrollY + 'px';
+
         // 現在のメガメニューを表示
-        megaMenu.classList.add("active");
+        megaMenu.classList.add('active');
       });
 
       // メガメニュー内でのマウス移動時は表示を維持
-      megaMenu.addEventListener("mouseenter", function () {
-        megaMenu.classList.add("active");
+      megaMenu.addEventListener('mouseenter', function () {
+        megaMenu.classList.add('active');
       });
 
       // メガメニューから離れた時の非表示
-      item.addEventListener("mouseleave", function () {
+      item.addEventListener('mouseleave', function () {
         setTimeout(() => {
-          megaMenu.classList.remove("active");
+          megaMenu.classList.remove('active');
         }, 200);
       });
     }
   });
 
   // メガメニュー外をクリックした時の非表示
-  document.addEventListener("click", function (e) {
-    if (!e.target.closest(".main-nav")) {
-      document.querySelectorAll(".mega-menu").forEach((menu) => {
-        menu.classList.remove("active");
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.main-nav')) {
+      document.querySelectorAll('.mega-menu').forEach(menu => {
+        menu.classList.remove('active');
       });
     }
   });
 }
 
 // ===== ページ読み込み時の初期化 =====
-window.addEventListener("load", function () {
+window.addEventListener('load', function () {
   // 初期状態を設定
-  document.getElementById("themeSelect").value = "normal";
-  document.getElementById("fontSizeSelect").value = "normal";
-  document.getElementById("languageSelect").value = "ja";
+  document.getElementById('themeSelect').value = 'normal';
+  document.getElementById('fontSizeSelect').value = 'normal';
+  document.getElementById('languageSelect').value = 'ja';
 
   // メガメニューを初期化
   initMegaMenu();
+
+  // モバイルアコーディオンを初期化
+  initMobileAccordion();
 });
 
 // ===== モバイルメニュー制御 =====
 function toggleMobileMenu() {
   const hamburgerBtn = document.querySelector('.hamburger-btn');
   const mobileNav = document.querySelector('.mobile-nav');
-  
-  hamburgerBtn.classList.toggle('active');
-  mobileNav.classList.toggle('active');
+
+  console.log('Toggle clicked', hamburgerBtn, mobileNav);
+
+  if (hamburgerBtn) {
+    hamburgerBtn.classList.toggle('active');
+    console.log('Hamburger active:', hamburgerBtn.classList.contains('active'));
+  }
+
+  if (mobileNav) {
+    mobileNav.classList.toggle('active');
+    console.log('Mobile nav active:', mobileNav.classList.contains('active'));
+  }
+}
+
+// ===== モバイルアコーディオン制御 =====
+function initMobileAccordion() {
+  const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+
+  mobileNavItems.forEach(item => {
+    const h3 = item.querySelector('h3');
+    const subMenu = item.querySelector('.mobile-sub-menu');
+
+    if (h3 && subMenu) {
+      h3.addEventListener('click', function () {
+        // 他のアコーディオンを閉じる
+        mobileNavItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+
+        // 現在のアコーディオンをトグル
+        item.classList.toggle('active');
+      });
+    }
+  });
 }
 
 // モバイルメニュー外をクリックした時の非表示
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
   const hamburgerBtn = document.querySelector('.hamburger-btn');
   const mobileNav = document.querySelector('.mobile-nav');
-  
+
   if (!e.target.closest('.hamburger-btn') && !e.target.closest('.mobile-nav')) {
     hamburgerBtn.classList.remove('active');
     mobileNav.classList.remove('active');
