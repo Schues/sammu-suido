@@ -124,7 +124,61 @@ window.addEventListener('load', function () {
 
   // モバイルアコーディオンを初期化
   initMobileAccordion();
+
+  // お知らせタブを初期化
+  initNewsTabs();
 });
+
+// ===== スクロールトップ機能 =====
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+}
+
+// ===== 広告バナー制御 =====
+function closeAdBanner() {
+  const adBanner = document.getElementById('adBanner');
+  if (adBanner) {
+    // まず初期状態を解除
+    adBanner.classList.remove('initial');
+    // 閉じた状態に変更
+    adBanner.classList.add('collapsed');
+
+    // 少し遅延してから完全に表示
+    setTimeout(() => {
+      adBanner.classList.remove('hidden');
+    }, 300);
+  }
+}
+
+// ページ読み込み時に広告バナーを初期状態で表示
+window.addEventListener('load', function () {
+  const adBanner = document.getElementById('adBanner');
+  if (adBanner) {
+    adBanner.classList.add('initial');
+  }
+});
+
+// ===== お知らせタブ制御 =====
+function initNewsTabs() {
+  const tabButtons = document.querySelectorAll('.tab-button');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      // すべてのタブボタンからactiveクラスを削除
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+
+      // クリックされたボタンにactiveクラスを追加
+      this.classList.add('active');
+
+      // タブの切り替え処理（必要に応じて実装）
+      const tabType = this.getAttribute('data-tab');
+      console.log('タブ切り替え:', tabType);
+    });
+  });
+}
 
 // ===== モバイルメニュー制御 =====
 function toggleMobileMenu() {
