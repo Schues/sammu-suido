@@ -1,5 +1,5 @@
 body {
-  font-family: 'Hiragino Sans', sans-serif;
+  font-family: "Hiragino Sans", sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.8;
@@ -13,6 +13,15 @@ header {
   color: white;
   padding: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: position 0.3s ease;
+}
+header.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
 }
 
 .header-top {
@@ -291,14 +300,16 @@ body.blue {
   color: #fff8c6;
 }
 
-body.normal-font {
-  font-size: 16px;
+html.normal-font {
+  font-size: 16px !important;
 }
-body.large-font {
-  font-size: 20px;
+
+html.large-font {
+  font-size: 20px !important;
 }
-body.xlarge-font {
-  font-size: 24px;
+
+html.xlarge-font {
+  font-size: 24px !important;
 }
 
 .settings-panel {
@@ -397,8 +408,8 @@ body.xlarge-font {
   font-weight: bold;
   transition: transform 0.3s ease;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .mobile-nav-item.active h3 .accordion-toggle {
   transform: rotate(45deg);
@@ -539,9 +550,9 @@ main {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   -o-object-position: center;
-  object-position: center;
+     object-position: center;
 }
 .hero-section .hero-image .hero-tagline {
   position: absolute;
@@ -555,7 +566,7 @@ main {
   padding: 0 2rem;
 }
 .hero-section .hero-image .hero-tagline h1 {
-  font-family: 'Noto Serif JP', 'Times New Roman', serif;
+  font-family: "Noto Serif JP", "Times New Roman", serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
@@ -576,7 +587,7 @@ main {
   }
 }
 .hero-section .hero-image::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -685,9 +696,7 @@ main {
   font-weight: bold;
   color: #2c3e50;
 }
-.first-view .contact-panel .contact-info p.fax,
-.first-view .contact-panel .contact-info p.online-text,
-.first-view .contact-panel .contact-info p.emergency-note {
+.first-view .contact-panel .contact-info p.fax, .first-view .contact-panel .contact-info p.online-text, .first-view .contact-panel .contact-info p.emergency-note {
   color: #666;
   font-size: 0.9rem;
 }
@@ -707,7 +716,7 @@ main {
   position: relative;
 }
 .news-section .section-header h2::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -8px;
   left: 50%;
@@ -764,7 +773,7 @@ main {
   box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
 }
 .news-section .news-tabs .tab-button.active::after {
-  content: '';
+  content: "";
   position: absolute;
   right: 1rem;
   width: 0;
@@ -901,7 +910,7 @@ main {
   position: relative;
 }
 .service-guide .section-header h2::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -8px;
   left: 50%;
@@ -1214,4 +1223,4 @@ footer .scroll-to-top:hover {
 }
 footer .scroll-to-top span {
   line-height: 1;
-} /*# sourceMappingURL=styles.css.map */
+}

@@ -8,10 +8,24 @@ function setTheme(theme) {
 
 // ===== 文字サイズ切り替え =====
 function setFontSize(size) {
-  document.body.classList.remove('normal-font', 'large-font', 'xlarge-font');
-  if (size === 'normal') document.body.classList.add('normal-font');
-  if (size === 'large') document.body.classList.add('large-font');
-  if (size === 'xlarge') document.body.classList.add('xlarge-font');
+  console.log('setFontSize called with:', size);
+  console.log('Before - html classes:', document.documentElement.className);
+
+  document.documentElement.classList.remove(
+    'normal-font',
+    'large-font',
+    'xlarge-font'
+  );
+  if (size === 'normal') document.documentElement.classList.add('normal-font');
+  if (size === 'large') document.documentElement.classList.add('large-font');
+  if (size === 'xlarge') document.documentElement.classList.add('xlarge-font');
+
+  console.log('After - html classes:', document.documentElement.className);
+  console.log(
+    'Computed font-size:',
+    window.getComputedStyle(document.documentElement).fontSize
+  );
+
   // 選択状態を更新
   document.getElementById('fontSizeSelect').value = size;
 }
@@ -68,6 +82,17 @@ function googleTranslateElementInit() {
 // ===== メガメニュー制御 =====
 function initMegaMenu() {
   const navItems = document.querySelectorAll('.nav-item');
+  const header = document.querySelector('header');
+
+  // メガメニューの状態を管理する関数
+  function updateMegaMenuState() {
+    const activeMenus = document.querySelectorAll('.mega-menu.active');
+    if (activeMenus.length > 0) {
+      header.classList.add('fixed');
+    } else {
+      header.classList.remove('fixed');
+    }
+  }
 
   navItems.forEach(item => {
     const megaMenu = item.querySelector('.mega-menu');
@@ -86,17 +111,20 @@ function initMegaMenu() {
 
         // 現在のメガメニューを表示
         megaMenu.classList.add('active');
+        updateMegaMenuState();
       });
 
       // メガメニュー内でのマウス移動時は表示を維持
       megaMenu.addEventListener('mouseenter', function () {
         megaMenu.classList.add('active');
+        updateMegaMenuState();
       });
 
       // メガメニューから離れた時の非表示
       item.addEventListener('mouseleave', function () {
         setTimeout(() => {
           megaMenu.classList.remove('active');
+          updateMegaMenuState();
         }, 200);
       });
     }
@@ -108,6 +136,7 @@ function initMegaMenu() {
       document.querySelectorAll('.mega-menu').forEach(menu => {
         menu.classList.remove('active');
       });
+      updateMegaMenuState();
     }
   });
 }

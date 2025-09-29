@@ -55,6 +55,16 @@ header {
   color: white;
   padding: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: position 0.3s ease;
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+  }
 }
 
 // ヘッダートップバー
@@ -382,19 +392,17 @@ body {
   }
 }
 
-// 文字サイズ
-body {
-  &.normal-font {
-    font-size: 16px;
-  }
+// 文字サイズ（html要素のfont-sizeを変更）
+html.normal-font {
+  font-size: 16px !important;
+}
 
-  &.large-font {
-    font-size: 20px;
-  }
+html.large-font {
+  font-size: 20px !important;
+}
 
-  &.xlarge-font {
-    font-size: 24px;
-  }
+html.xlarge-font {
+  font-size: 24px !important;
 }
 
 // 設定パネル
