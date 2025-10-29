@@ -4,5 +4,8 @@
 # Markdownファイル
 *.md
 
+# macOSのシステムファイル
+.DS_Store
+
 # ただし、.gitignore自体は除外しない
 !.gitignore
