@@ -385,11 +385,135 @@ body {
   &.dark {
     background: black;
     color: white;
+
+    // 白背景の要素を透明化または背景色なし
+    .header-top,
+    .search-area .search-btn,
+    .mega-menu,
+    .mobile-sub-menu,
+    .emergency-info,
+    .emergency-notice-empty,
+    .notice-content .notice-details,
+    .notice-content .notice-contact,
+    .news-content,
+    .news-item,
+    .news-tabs .tab-button,
+    .municipalities-box,
+    .service-area-box,
+    .jurisdiction-section .municipalities-box,
+    .jurisdiction-section .service-area-box {
+      background: transparent !important;
+    }
+
+    // テキスト色を白に
+    .section-header h2,
+    .section-header .section-subtitle,
+    .municipalities-box,
+    .service-area-box,
+    .municipalities-list li,
+    .news-item,
+    .news-title a,
+    .news-tabs .tab-button,
+    .notice-content,
+    .notice-content h3,
+    .notice-content .notice-date,
+    .notice-content .notice-text,
+    .notice-content .notice-detail-item,
+    .notice-content .notice-contact,
+    .notice-content .notice-additional,
+    .notice-content .notice-area,
+    .emergency-notice-empty,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: white !important;
+    }
+
+    // ボーダーも調整
+    .municipalities-box,
+    .service-area-box,
+    .jurisdiction-section .municipalities-box,
+    .jurisdiction-section .service-area-box,
+    .notice-content .notice-details,
+    .news-content {
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    // タブボタンのボーダーも調整
+    .news-tabs .tab-button {
+      border-color: rgba(255, 255, 255, 0.3);
+    }
   }
 
   &.blue {
     background: #001f4d;
     color: #fff8c6;
+
+    // 白背景の要素を透明化または背景色なし
+    .header-top,
+    .search-area .search-btn,
+    .mega-menu,
+    .mobile-sub-menu,
+    .emergency-info,
+    .emergency-notice-empty,
+    .notice-content .notice-details,
+    .notice-content .notice-contact,
+    .news-content,
+    .news-item,
+    .news-tabs .tab-button,
+    .municipalities-box,
+    .service-area-box,
+    .jurisdiction-section .municipalities-box,
+    .jurisdiction-section .service-area-box {
+      background: transparent !important;
+    }
+
+    // テキスト色を黄色に
+    .section-header h2,
+    .section-header .section-subtitle,
+    .municipalities-box,
+    .service-area-box,
+    .municipalities-list li,
+    .news-item,
+    .news-title a,
+    .news-tabs .tab-button,
+    .notice-content,
+    .notice-content h3,
+    .notice-content .notice-date,
+    .notice-content .notice-text,
+    .notice-content .notice-detail-item,
+    .notice-content .notice-contact,
+    .notice-content .notice-additional,
+    .notice-content .notice-area,
+    .emergency-notice-empty,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #fff8c6 !important;
+    }
+
+    // ボーダーも調整
+    .municipalities-box,
+    .service-area-box,
+    .jurisdiction-section .municipalities-box,
+    .jurisdiction-section .service-area-box,
+    .notice-content .notice-details,
+    .news-content {
+      border-color: rgba(255, 248, 198, 0.3);
+    }
+
+    // タブボタンのボーダーも調整
+    .news-tabs .tab-button {
+      border-color: rgba(255, 248, 198, 0.3);
+    }
   }
 }
 

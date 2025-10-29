@@ -1,5 +1,5 @@
 body {
-  font-family: "Hiragino Sans", sans-serif;
+  font-family: 'Hiragino Sans', sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.8;
@@ -292,9 +292,117 @@ body.dark {
   background: black;
   color: white;
 }
+body.dark .header-top,
+body.dark .search-area .search-btn,
+body.dark .mega-menu,
+body.dark .mobile-sub-menu,
+body.dark .emergency-info,
+body.dark .emergency-notice-empty,
+body.dark .notice-content .notice-details,
+body.dark .notice-content .notice-contact,
+body.dark .news-content,
+body.dark .news-item,
+body.dark .news-tabs .tab-button,
+body.dark .municipalities-box,
+body.dark .service-area-box,
+body.dark .jurisdiction-section .municipalities-box,
+body.dark .jurisdiction-section .service-area-box {
+  background: transparent !important;
+}
+body.dark .section-header h2,
+body.dark .section-header .section-subtitle,
+body.dark .municipalities-box,
+body.dark .service-area-box,
+body.dark .municipalities-list li,
+body.dark .news-item,
+body.dark .news-title a,
+body.dark .news-tabs .tab-button,
+body.dark .notice-content,
+body.dark .notice-content h3,
+body.dark .notice-content .notice-date,
+body.dark .notice-content .notice-text,
+body.dark .notice-content .notice-detail-item,
+body.dark .notice-content .notice-contact,
+body.dark .notice-content .notice-additional,
+body.dark .notice-content .notice-area,
+body.dark .emergency-notice-empty,
+body.dark p,
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6 {
+  color: white !important;
+}
+body.dark .municipalities-box,
+body.dark .service-area-box,
+body.dark .jurisdiction-section .municipalities-box,
+body.dark .jurisdiction-section .service-area-box,
+body.dark .notice-content .notice-details,
+body.dark .news-content {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+body.dark .news-tabs .tab-button {
+  border-color: rgba(255, 255, 255, 0.3);
+}
 body.blue {
   background: #001f4d;
   color: #fff8c6;
+}
+body.blue .header-top,
+body.blue .search-area .search-btn,
+body.blue .mega-menu,
+body.blue .mobile-sub-menu,
+body.blue .emergency-info,
+body.blue .emergency-notice-empty,
+body.blue .notice-content .notice-details,
+body.blue .notice-content .notice-contact,
+body.blue .news-content,
+body.blue .news-item,
+body.blue .news-tabs .tab-button,
+body.blue .municipalities-box,
+body.blue .service-area-box,
+body.blue .jurisdiction-section .municipalities-box,
+body.blue .jurisdiction-section .service-area-box {
+  background: transparent !important;
+}
+body.blue .section-header h2,
+body.blue .section-header .section-subtitle,
+body.blue .municipalities-box,
+body.blue .service-area-box,
+body.blue .municipalities-list li,
+body.blue .news-item,
+body.blue .news-title a,
+body.blue .news-tabs .tab-button,
+body.blue .notice-content,
+body.blue .notice-content h3,
+body.blue .notice-content .notice-date,
+body.blue .notice-content .notice-text,
+body.blue .notice-content .notice-detail-item,
+body.blue .notice-content .notice-contact,
+body.blue .notice-content .notice-additional,
+body.blue .notice-content .notice-area,
+body.blue .emergency-notice-empty,
+body.blue p,
+body.blue h1,
+body.blue h2,
+body.blue h3,
+body.blue h4,
+body.blue h5,
+body.blue h6 {
+  color: #fff8c6 !important;
+}
+body.blue .municipalities-box,
+body.blue .service-area-box,
+body.blue .jurisdiction-section .municipalities-box,
+body.blue .jurisdiction-section .service-area-box,
+body.blue .notice-content .notice-details,
+body.blue .news-content {
+  border-color: rgba(255, 248, 198, 0.3);
+}
+body.blue .news-tabs .tab-button {
+  border-color: rgba(255, 248, 198, 0.3);
 }
 
 html.normal-font {
@@ -405,8 +513,8 @@ html.xlarge-font {
   font-weight: bold;
   transition: transform 0.3s ease;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 .mobile-nav-item.active h3 .accordion-toggle {
   transform: rotate(45deg);
@@ -582,9 +690,9 @@ main {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   -o-object-position: center;
-     object-position: center;
+  object-position: center;
 }
 .hero-section .hero-image .hero-tagline {
   position: absolute;
@@ -598,7 +706,7 @@ main {
   padding: 0 2rem;
 }
 .hero-section .hero-image .hero-tagline h1 {
-  font-family: "Noto Serif JP", "Times New Roman", serif;
+  font-family: 'Noto Serif JP', 'Times New Roman', serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
@@ -619,7 +727,7 @@ main {
   }
 }
 .hero-section .hero-image::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -738,7 +846,8 @@ main {
   animation: blink 2s ease-in-out infinite;
 }
 @keyframes blink {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -938,7 +1047,9 @@ main {
   font-weight: bold;
   color: #2c3e50;
 }
-.first-view .contact-panel .contact-info p.fax, .first-view .contact-panel .contact-info p.online-text, .first-view .contact-panel .contact-info p.emergency-note {
+.first-view .contact-panel .contact-info p.fax,
+.first-view .contact-panel .contact-info p.online-text,
+.first-view .contact-panel .contact-info p.emergency-note {
   color: #666;
   font-size: 0.9rem;
 }
@@ -958,7 +1069,7 @@ main {
   position: relative;
 }
 .news-section .section-header h2::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -8px;
   left: 50%;
@@ -1015,7 +1126,7 @@ main {
   box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
 }
 .news-section .news-tabs .tab-button.active::after {
-  content: "";
+  content: '';
   position: absolute;
   right: 1rem;
   width: 0;
@@ -1152,7 +1263,7 @@ main {
   position: relative;
 }
 .service-guide .section-header h2::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -8px;
   left: 50%;
@@ -1487,7 +1598,7 @@ footer .scroll-to-top span {
   padding-bottom: 1rem;
 }
 .jurisdiction-section .section-header h2::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -1618,5 +1729,5 @@ footer .scroll-to-top span {
   height: 100%;
   display: block;
   -o-object-fit: contain;
-     object-fit: contain;
-}/*# sourceMappingURL=styles.css.map */
+  object-fit: contain;
+} /*# sourceMappingURL=styles.css.map */
