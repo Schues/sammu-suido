@@ -1,0 +1,1269 @@
+// 共通スタイルのインポート
+@import 'common';
+
+// ボタン
+button {
+  padding: 0.5rem 1rem;
+  margin: 0.2rem;
+  cursor: pointer;
+}
+
+// テーマ切り替え
+body {
+  &.normal {
+    background: $background-color;
+    color: black;
+  }
+
+  &.dark {
+    background: black;
+    color: white;
+
+    // 白背景の要素を透明化または背景色なし
+    .header-top,
+    .search-area .search-btn,
+    .mega-menu,
+    .mobile-sub-menu,
+    .emergency-info,
+    .emergency-notice-empty,
+    .notice-content .notice-details,
+    .notice-content .notice-contact,
+    .news-content,
+    .news-item,
+    .news-tabs .tab-button,
+    .municipalities-box,
+    .service-area-box,
+    .jurisdiction-section .municipalities-box,
+    .jurisdiction-section .service-area-box {
+      background: transparent !important;
+    }
+
+    // テキスト色を白に
+    .section-header h2,
+    .section-header .section-subtitle,
+    .municipalities-box,
+    .service-area-box,
+    .municipalities-list li,
+    .news-item,
+    .news-title a,
+    .news-tabs .tab-button,
+    .notice-content,
+    .notice-content h3,
+    .notice-content .notice-date,
+    .notice-content .notice-text,
+    .notice-content .notice-detail-item,
+    .notice-content .notice-contact,
+    .notice-content .notice-additional,
+    .notice-content .notice-area,
+    .emergency-notice-empty,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: white !important;
+    }
+
+    // ボーダーも調整
+    .municipalities-box,
+    .service-area-box,
+    .jurisdiction-section .municipalities-box,
+    .jurisdiction-section .service-area-box,
+    .notice-content .notice-details,
+    .news-content {
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    // タブボタンのボーダーも調整
+    .news-tabs .tab-button {
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  &.blue {
+    background: #001f4d;
+    color: #fff8c6;
+
+    // 白背景の要素を透明化または背景色なし
+    .header-top,
+    .search-area .search-btn,
+    .mega-menu,
+    .mobile-sub-menu,
+    .emergency-info,
+    .emergency-notice-empty,
+    .notice-content .notice-details,
+    .notice-content .notice-contact,
+    .news-content,
+    .news-item,
+    .news-tabs .tab-button,
+    .municipalities-box,
+    .service-area-box,
+    .jurisdiction-section .municipalities-box,
+    .jurisdiction-section .service-area-box {
+      background: transparent !important;
+    }
+
+    // テキスト色を黄色に
+    .section-header h2,
+    .section-header .section-subtitle,
+    .municipalities-box,
+    .service-area-box,
+    .municipalities-list li,
+    .news-item,
+    .news-title a,
+    .news-tabs .tab-button,
+    .notice-content,
+    .notice-content h3,
+    .notice-content .notice-date,
+    .notice-content .notice-text,
+    .notice-content .notice-detail-item,
+    .notice-content .notice-contact,
+    .notice-content .notice-additional,
+    .notice-content .notice-area,
+    .emergency-notice-empty,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #fff8c6 !important;
+    }
+
+    // ボーダーも調整
+    .municipalities-box,
+    .service-area-box,
+    .jurisdiction-section .municipalities-box,
+    .jurisdiction-section .service-area-box,
+    .notice-content .notice-details,
+    .news-content {
+      border-color: rgba(255, 248, 198, 0.3);
+    }
+
+    // タブボタンのボーダーも調整
+    .news-tabs .tab-button {
+      border-color: rgba(255, 248, 198, 0.3);
+    }
+  }
+}
+
+// 文字サイズ（html要素のfont-sizeを変更）
+html.normal-font {
+  font-size: 16px !important;
+}
+
+html.large-font {
+  font-size: 20px !important;
+}
+
+html.xlarge-font {
+  font-size: 24px !important;
+}
+
+// 設定パネル
+.settings-panel {
+  background: $primary-color;
+  color: white;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.setting-group {
+  @include flex-center;
+  gap: 0.5rem;
+
+  label {
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  select {
+    padding: 0.3rem 0.5rem;
+    border: $border-width solid $border-color;
+    border-radius: $border-radius-sm;
+    background: $background-color;
+    color: black;
+    min-width: 100px;
+  }
+
+  button {
+    padding: 0.3rem 0.8rem;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+}
+
+// メインコンテンツ
+main {
+  @include container;
+  padding-bottom: $spacing-lg;
+}
+
+// ヒーローセクション
+.hero-section {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-bottom: 3rem;
+  overflow: hidden;
+
+  .hero-image {
+    width: 100%;
+    height: 30vh;
+    // min-height: 300px;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-tagline {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 2;
+      width: 100%;
+      max-width: 900px;
+      padding: 0 2rem;
+
+      h1 {
+        font-family: 'Noto Serif JP', 'Times New Roman', serif;
+        font-size: $font-size-xxxl;
+        font-weight: 700;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        line-height: $line-height-tight;
+        margin: 0;
+        letter-spacing: 0.05em;
+
+        @include media-sm {
+          font-size: $font-size-xxl;
+          padding: 0 $spacing-sm;
+        }
+
+        @include media-xs {
+          font-size: $font-size-xl;
+        }
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+  }
+}
+
+// ファーストビュー（緊急情報コーナー）
+.first-view {
+  margin-bottom: $spacing-xxl;
+
+  @include media-sm {
+    margin-bottom: $spacing-xxl;
+  }
+
+  .emergency-container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+
+    @include media-sm {
+      padding: 0 $spacing-sm;
+    }
+  }
+
+  .emergency-info {
+    background: $background-color;
+    border: $border-width-thick solid $emergency-color;
+    overflow: hidden;
+  }
+
+  .emergency-header {
+    background: $emergency-color;
+    color: white;
+    // padding: 1rem 2rem;
+    @include flex-center;
+    gap: $spacing-sm;
+
+    @include media-sm {
+      padding: $spacing-sm $spacing-md;
+      // flex-direction: column;
+      text-align: center;
+    }
+
+    .emergency-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      svg {
+        color: white;
+      }
+    }
+
+    h2 {
+      margin: 0;
+      font-size: $font-size-xxl;
+      font-weight: bold;
+      color: white;
+
+      @include media-sm {
+        font-size: $font-size-xl;
+      }
+    }
+  }
+
+  .emergency-content {
+    padding: $spacing-xl $spacing-lg;
+
+    @include media-sm {
+      padding: $spacing-md $spacing-sm;
+    }
+  }
+
+  .emergency-notice {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .emergency-notice-empty {
+    text-align: center;
+    padding: $spacing-lg;
+    color: $text-color-light;
+
+    .empty-message {
+      margin: 0;
+      font-size: $font-size-lg;
+      color: $text-color-light;
+    }
+  }
+
+  .emergency-notice-active {
+    width: 100%;
+    animation: slide-in 0.3s ease-out;
+
+    @keyframes slide-in {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .notice-badge {
+    display: inline-block;
+    background: $emergency-color;
+    color: white;
+    padding: $spacing-xs $spacing-md;
+    border-radius: 20px;
+    font-size: $font-size-base;
+    font-weight: bold;
+    margin-bottom: $spacing-sm;
+    animation: blink 2s ease-in-out infinite;
+
+    @keyframes blink {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .notice-content {
+    // background: #fff5f5;
+    padding: $spacing-md $spacing-lg;
+
+    @include media-sm {
+      padding: $spacing-sm $spacing-md;
+    }
+
+    h3 {
+      margin: 0 0 0.75rem 0;
+      font-size: $font-size-xxl;
+      color: #721c24;
+      font-weight: bold;
+
+      @include media-sm {
+        font-size: $font-size-xl;
+      }
+    }
+
+    .notice-date {
+      margin: 0 0 $spacing-sm 0;
+      font-size: $font-size-sm;
+      color: $text-color-light;
+    }
+
+    .notice-details {
+      margin: 0 0 $spacing-md 0;
+      padding: $spacing-sm;
+      background: $background-color;
+      border-radius: $border-radius-sm;
+      border: $border-width solid #f8d7da;
+
+      .notice-detail-item {
+        margin: $spacing-xs 0;
+        font-size: $font-size-base;
+        color: $text-color;
+        line-height: $line-height-base;
+
+        @include media-sm {
+          font-size: $font-size-sm;
+        }
+
+        strong {
+          color: #721c24;
+        }
+      }
+    }
+
+    .notice-text {
+      margin: 0 0 $spacing-sm 0;
+      font-size: $font-size-lg;
+      color: $text-color;
+      line-height: $line-height-loose;
+
+      @include media-sm {
+        font-size: $font-size-base;
+      }
+    }
+
+    .notice-contact {
+      margin: $spacing-sm 0;
+      padding: $spacing-sm;
+      background: $background-color;
+      border-left: 3px solid $emergency-color;
+      font-size: $font-size-base;
+      color: $text-color;
+      line-height: $line-height-loose;
+
+      @include media-sm {
+        font-size: $font-size-sm;
+        padding: 0.8rem;
+      }
+
+      strong {
+        color: #721c24;
+      }
+    }
+
+    .notice-additional {
+      margin: $spacing-sm 0;
+      font-size: $font-size-sm;
+      color: #555;
+      line-height: 1.7;
+      padding: 0.75rem;
+      background: #fefefe;
+      border-radius: $border-radius-sm;
+
+      @include media-sm {
+        font-size: $font-size-xs;
+      }
+    }
+
+    .notice-area {
+      margin: 0;
+      padding-top: $spacing-sm;
+      border-top: $border-width solid #f8d7da;
+      font-size: $font-size-base;
+      color: $emergency-color;
+      font-weight: bold;
+    }
+  }
+
+  // 旧スタイル（参考用 - 削除可能）
+  .contact-panels {
+    @include flex-center;
+    gap: $spacing-lg;
+    flex-wrap: wrap;
+
+    @include media-sm {
+      @include flex-column;
+      gap: $spacing-md;
+    }
+  }
+
+  .contact-panel {
+    background: $background-color;
+    border: 3px solid;
+    padding: $spacing-lg $spacing-md;
+    text-align: center;
+    position: relative;
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    box-shadow: $shadow-md;
+    @include transition(transform box-shadow, $transition-slow);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+    }
+
+    &.blue {
+      border-color: $accent-color;
+
+      .panel-icon {
+        background: $accent-color;
+      }
+
+      .contact-info {
+        background: rgba(74, 144, 226, 0.1);
+        border-radius: $border-radius-md;
+        padding: $spacing-sm;
+        margin-top: $spacing-sm;
+      }
+    }
+
+    &.green {
+      border-color: #50c878;
+
+      .panel-icon {
+        background: #50c878;
+      }
+
+      .contact-info {
+        background: rgba(80, 200, 120, 0.1);
+        border-radius: $border-radius-md;
+        padding: $spacing-sm;
+        margin-top: $spacing-sm;
+      }
+    }
+
+    &.red {
+      border-color: #ff6b6b;
+
+      .panel-icon {
+        background: #ff6b6b;
+      }
+
+      .contact-info {
+        background: rgba(255, 107, 107, 0.1);
+        border-radius: $border-radius-md;
+        padding: $spacing-sm;
+        margin-top: $spacing-sm;
+      }
+    }
+
+    .panel-icon {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      @include flex-center;
+      font-size: $font-size-xxl;
+      color: white;
+      box-shadow: $shadow-md;
+    }
+
+    h3 {
+      margin: $spacing-md 0 $spacing-sm 0;
+      font-size: $font-size-lg;
+      font-weight: bold;
+      color: $text-color;
+      line-height: $line-height-tight;
+    }
+
+    .contact-info {
+      p {
+        margin: $spacing-xs 0;
+        font-size: $font-size-sm;
+
+        &.phone-number {
+          font-size: $font-size-xl;
+          font-weight: bold;
+          color: #2c3e50;
+        }
+
+        &.fax,
+        &.online-text,
+        &.emergency-note {
+          color: $text-color-light;
+          font-size: $font-size-xs;
+        }
+      }
+    }
+  }
+}
+
+// お知らせセクション
+.news-section {
+  margin-bottom: $spacing-xxl;
+
+  .section-header {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+
+    h2 {
+      font-size: $font-size-xxxl;
+      font-weight: bold;
+      color: $text-color;
+      margin: 0 0 $spacing-xs 0;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, $accent-color, #50c878);
+        border-radius: 2px;
+      }
+    }
+
+    .section-subtitle {
+      font-size: $font-size-xs;
+      color: $text-color-light;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+  }
+
+  .news-tabs {
+    @include flex-center;
+    gap: $spacing-xs;
+    margin-bottom: $spacing-lg;
+    flex-wrap: wrap;
+
+    @include media-sm {
+      @include flex-column;
+      align-items: center;
+    }
+
+    .tab-button {
+      background: $background-color;
+      border: $border-width-thick solid $border-color-light;
+      border-radius: 25px;
+      padding: 0.75rem $spacing-md;
+      font-size: $font-size-xs;
+      font-weight: 500;
+      color: $text-color-light;
+      cursor: pointer;
+      @include transition();
+      @include flex-start;
+      gap: $spacing-xs;
+      position: relative;
+
+      &:hover {
+        border-color: $accent-color;
+        color: $accent-color;
+        transform: translateY(-2px);
+        box-shadow: $shadow-sm;
+      }
+
+      &.active {
+        background: $accent-color;
+        border-color: $accent-color;
+        color: white;
+        box-shadow: $shadow-md;
+
+        &::after {
+          content: '';
+          position: absolute;
+          right: $spacing-sm;
+          width: 0;
+          height: 0;
+          border-left: 6px solid white;
+          border-top: 4px solid transparent;
+          border-bottom: 4px solid transparent;
+        }
+      }
+
+      @include media-sm {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+    }
+  }
+
+  .news-content {
+    @include card;
+    padding: $spacing-lg;
+
+    .news-list {
+      .news-item {
+        @include flex-start;
+        align-items: flex-start;
+        gap: $spacing-sm;
+        padding: $spacing-md 0;
+        border-bottom: 1px dashed #ddd;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        @include media-sm {
+          @include flex-column;
+          gap: $spacing-xs;
+        }
+
+        .news-date {
+          font-size: $font-size-xs;
+          color: $text-color-light;
+          font-weight: 500;
+          min-width: 120px;
+          flex-shrink: 0;
+
+          @include media-sm {
+            min-width: auto;
+          }
+        }
+
+        .news-tags {
+          display: flex;
+          gap: $spacing-xs;
+          flex-wrap: wrap;
+          margin-bottom: $spacing-xs;
+
+          .tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: $font-size-xs;
+            font-weight: 500;
+            color: white;
+
+            &.featured {
+              background: #ff6b6b;
+            }
+
+            &.users {
+              background: #ffa726;
+            }
+
+            &.business {
+              background: #42a5f5;
+            }
+
+            &.events {
+              background: #66bb6a;
+            }
+          }
+        }
+
+        .news-title {
+          flex: 1;
+
+          a {
+            color: $text-color;
+            text-decoration: none;
+            font-size: $font-size-base;
+            line-height: $line-height-base;
+            @include transition(color);
+
+            &:hover {
+              color: $accent-color;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    .news-footer {
+      text-align: center;
+      margin-top: $spacing-lg;
+      padding-top: $spacing-md;
+      border-top: $border-width solid $border-color-light;
+
+      .view-all-btn {
+        @include button-primary;
+        border-radius: 25px;
+        padding: 0.75rem $spacing-lg;
+        font-size: $font-size-xs;
+        font-weight: 500;
+        @include flex-start;
+        gap: $spacing-xs;
+
+        &:hover {
+          background: #357abd;
+          transform: translateY(-2px);
+          box-shadow: $shadow-md;
+        }
+
+        svg {
+          @include transition(transform);
+        }
+
+        &:hover svg {
+          transform: translateX(4px);
+        }
+      }
+    }
+  }
+}
+
+// ご利用案内コーナー
+.service-guide {
+  margin-bottom: $spacing-xxl;
+
+  .section-header {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+
+    h2 {
+      font-size: $font-size-xxxl;
+      font-weight: bold;
+      color: $text-color;
+      margin: 0 0 $spacing-xs 0;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, $accent-color, #50c878);
+        border-radius: 2px;
+      }
+    }
+
+    .section-subtitle {
+      font-size: $font-size-xs;
+      color: $text-color-light;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+  }
+
+  .service-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    justify-content: center;
+
+    .service-card {
+      @include card;
+      padding: $spacing-lg $spacing-md;
+      text-align: center;
+      flex-basis: calc(25% - 1.125rem);
+      min-width: 200px;
+      max-width: 250px;
+      @include transition();
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-lg;
+        border-color: $accent-color;
+      }
+
+      @include media-md {
+        flex-basis: calc(33.333% - 1rem);
+      }
+
+      @include media-sm {
+        flex-basis: calc(50% - 0.75rem);
+        min-width: 150px;
+        padding: $spacing-md $spacing-sm;
+      }
+
+      @include media-xs {
+        flex-basis: 100%;
+        max-width: 300px;
+      }
+
+      .service-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto $spacing-md auto;
+        background: linear-gradient(135deg, $accent-color, #50c878);
+        border-radius: 50%;
+        @include flex-center;
+        color: white;
+        @include transition();
+
+        svg {
+          @include transition(transform);
+        }
+
+        @include media-sm {
+          width: 60px;
+          height: 60px;
+          margin-bottom: $spacing-sm;
+        }
+      }
+
+      &:hover .service-icon {
+        background: linear-gradient(135deg, #357abd, #45b06a);
+
+        svg {
+          transform: scale(1.1);
+        }
+      }
+
+      h3 {
+        font-size: $font-size-base;
+        font-weight: 600;
+        color: $text-color;
+        margin: 0;
+        line-height: $line-height-tight;
+
+        @include media-sm {
+          font-size: $font-size-xs;
+        }
+      }
+    }
+  }
+}
+
+// 広告バナー
+.ad-banner {
+  background: $background-color;
+  box-shadow: $shadow-md;
+  margin: $spacing-lg 0;
+  position: relative;
+  transform: translateY(0);
+  @include transition();
+  max-height: 300px;
+  overflow: hidden;
+
+  // 初期状態：フッター上に固定表示
+  &.initial {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  // 閉じた後：通常のセクションとして表示
+  &.collapsed {
+    position: static;
+    margin: $spacing-lg 0 $spacing-xl 0;
+    box-shadow: none;
+    z-index: auto;
+
+    .ad-close {
+      display: none;
+    }
+  }
+
+  // 完全に隠す
+  &.hidden {
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    transform: translateY(-100%);
+  }
+
+  .ad-container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: $spacing-md $spacing-lg $spacing-lg $spacing-lg;
+
+    h3 {
+      margin: 0 0 $spacing-sm 0;
+      font-size: $font-size-xl;
+      font-weight: bold;
+      text-align: center;
+      color: $text-color;
+    }
+
+    .ad-grid {
+      display: flex;
+      gap: $spacing-sm;
+      margin-bottom: $spacing-sm;
+      justify-content: center;
+
+      @include media-sm {
+        flex-wrap: wrap;
+        gap: $spacing-xs;
+      }
+
+      .ad-item {
+        flex: 1;
+        max-width: 200px;
+
+        .ad-placeholder {
+          // background: #f0f0f0;
+          // border: 2px dashed #ccc;
+          padding: $spacing-lg $spacing-sm;
+          text-align: center;
+          color: $text-color-light;
+          font-size: $font-size-xs;
+          border-radius: $border-radius-sm;
+          min-height: 80px;
+          @include flex-center;
+        }
+      }
+    }
+
+    .ad-info {
+      text-align: right;
+
+      a {
+        color: $text-color-light;
+        text-decoration: none;
+        font-size: $font-size-xs;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .ad-close {
+    position: absolute;
+    top: $spacing-xs;
+    right: $spacing-xs;
+    background: #ff4444;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: $font-size-xl;
+    font-weight: bold;
+    @include flex-center;
+    @include transition-fast(background-color);
+
+    &:hover {
+      background: #cc0000;
+    }
+  }
+}
+
+// 緊急情報とサイドバーのラッパー（PC時のみ横並び）
+.first-view-wrapper {
+  display: flex;
+  gap: $spacing-lg;
+  align-items: flex-start;
+  max-width: $container-max-width;
+  margin: 0 auto $spacing-xxl auto;
+  padding: 0 $container-padding;
+
+  @include media-sm {
+    @include flex-column;
+    padding: 0 $container-padding-mobile;
+    margin-bottom: $spacing-xxl;
+  }
+}
+
+// 管轄地域セクション（サイドバー）
+.jurisdiction-aside {
+  width: 25%;
+  min-width: 0;
+  padding: 0;
+  flex-shrink: 0;
+  position: sticky;
+  top: 2rem;
+  align-self: flex-start;
+
+  @include media-sm {
+    width: 100%;
+    position: static;
+    top: auto;
+    order: 999; // モバイル時は最後に表示
+    margin-top: $spacing-lg;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: $spacing-md;
+
+    @include media-sm {
+      margin-bottom: $spacing-xl;
+    }
+
+    h2 {
+      font-size: $font-size-xxl;
+      font-weight: bold;
+      color: $text-color;
+      margin: 0;
+      position: relative;
+      padding-bottom: 0.75rem;
+
+      @include media-sm {
+        font-size: $font-size-xxxl;
+        padding-bottom: $spacing-sm;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: $accent-color;
+
+        @include media-sm {
+          width: 80px;
+        }
+      }
+    }
+  }
+
+  .jurisdiction-container {
+    @include flex-column;
+    gap: $spacing-md;
+
+    @include media-sm {
+      gap: $spacing-lg;
+    }
+  }
+
+  .municipalities-box {
+    @include card;
+    border: $border-width-thick solid $border-color-light;
+    padding: $spacing-md;
+
+    @include media-sm {
+      padding: $spacing-lg;
+    }
+
+    h3 {
+      font-size: $font-size-xxl;
+      font-weight: bold;
+      color: $text-color;
+      margin: 0 0 $spacing-md 0;
+      padding-bottom: 0.75rem;
+      border-bottom: $border-width-thick solid $accent-color;
+    }
+
+    .municipalities-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 0.75rem $spacing-sm;
+        font-size: $font-size-lg;
+        color: $text-color;
+        border-bottom: $border-width solid #f0f0f0;
+        @include transition-fast(background-color);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover {
+          background-color: $background-color-light;
+        }
+
+        @include media-sm {
+          font-size: $font-size-base;
+          padding: 0.6rem 0.8rem;
+        }
+      }
+    }
+  }
+
+  .service-area-box {
+    @include card;
+    border: $border-width-thick solid $border-color-light;
+    padding: $spacing-md;
+    @include flex-column;
+
+    @include media-sm {
+      padding: $spacing-lg;
+    }
+
+    h3 {
+      font-size: $font-size-xxl;
+      font-weight: bold;
+      color: $text-color;
+      margin: 0 0 $spacing-md 0;
+      padding-bottom: 0.75rem;
+      border-bottom: $border-width-thick solid $accent-color;
+    }
+
+    .map-area {
+      width: 100%;
+      flex: 1;
+      overflow: hidden;
+      border-radius: $border-radius-md;
+      background: $background-color-light;
+      @include flex-center;
+
+      @include media-sm {
+        min-height: 300px;
+      }
+
+      .map-placeholder {
+        background: #e0e0e0;
+        color: #999;
+        padding: $spacing-xl $spacing-lg;
+        border-radius: $border-radius-md;
+        text-align: center;
+        font-size: $font-size-xl;
+        width: 100%;
+        height: 100%;
+        @include flex-center;
+        border: $border-width-thick dashed #ccc;
+        box-sizing: border-box;
+
+        @include media-sm {
+          font-size: $font-size-base;
+          padding: $spacing-lg $spacing-sm;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+// 右カラム（緊急情報とお知らせ）
+.right-column {
+  width: 75%;
+  min-width: 0;
+  flex-shrink: 0;
+
+  @include media-sm {
+    width: 100%;
+  }
+}

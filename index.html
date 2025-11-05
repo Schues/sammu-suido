@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>山武郡市広域水道企業団 公式サイト</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/front-page.css" />
   </head>
   <body class="normal normal-font">
     <header>
@@ -15,7 +15,7 @@
           <div class="header-left">
             <h1>
               <img
-                src="images/header-logo.svg"
+                src="images/logo-text-2.svg"
                 alt="山武郡市広域水道企業団"
                 class="header-logo"
               />
@@ -489,237 +489,246 @@
         </div>
       </section>
 
-      <!-- 緊急情報コーナー -->
-      <section class="first-view">
-        <div class="emergency-container">
-          <div class="emergency-info">
-            <div class="emergency-header">
-              <div class="emergency-icon">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                  />
-                </svg>
-              </div>
-              <h2>緊急情報</h2>
+      <!-- 緊急情報とサイドバーのラッパー（PC時のみ横並び） -->
+      <div class="first-view-wrapper">
+        <!-- サイドバー（PC時のみ左側に表示） -->
+        <aside class="jurisdiction-aside">
+          <div class="section-header">
+            <h2>管轄・給水地域</h2>
+          </div>
+          <div class="jurisdiction-container">
+            <div class="municipalities-box">
+              <h3>構成市町</h3>
+              <ul class="municipalities-list">
+                <li>東　金　市</li>
+                <li>山　武　市</li>
+                <li>大網白里市</li>
+                <li>九十九里町</li>
+                <li>横 芝 光 町</li>
+              </ul>
             </div>
-            <div class="emergency-content">
-              <div class="emergency-notice">
-                <div class="emergency-notice-active">
-                  <div class="notice-content">
-                    <h3>断水のお知らせ</h3>
-                    <p class="notice-date">令和7年10月2日 13:00更新</p>
-                    <div class="notice-details">
-                      <p class="notice-detail-item">
-                        <strong>日時：</strong>令和7年10月2日(木)
-                        13時00分~16時00分まで(予定)
-                      </p>
-                      <p class="notice-detail-item">
-                        <strong>場所：</strong>東金市東金790番地付近(PDE)所
-                      </p>
-                      <p class="notice-detail-item">
-                        <strong>断水戸数：</strong>約30戸
-                      </p>
-                      <p class="notice-detail-item">
-                        <strong>断水理由：</strong>水道管緊急漏水修理のため
-                      </p>
+            <div class="service-area-box">
+              <h3>給水区域</h3>
+              <div class="map-area">
+                <div class="map-placeholder">給水区域図</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- 右カラム（緊急情報とお知らせ） -->
+        <div class="right-column">
+          <!-- 緊急情報コーナー -->
+          <section class="first-view">
+            <div class="emergency-container">
+              <div class="emergency-info">
+                <div class="emergency-header">
+                  <div class="emergency-icon">
+                    <svg
+                      width="32"
+                      height="32"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                      />
+                    </svg>
+                  </div>
+                  <h2>緊急情報</h2>
+                </div>
+                <div class="emergency-content">
+                  <div class="emergency-notice">
+                    <div class="emergency-notice-active">
+                      <div class="notice-content">
+                        <h3>断水のお知らせ</h3>
+                        <p class="notice-date">令和7年10月2日 13:00更新</p>
+                        <div class="notice-details">
+                          <p class="notice-detail-item">
+                            <strong>日時：</strong>令和7年10月2日(木)
+                            13時00分~16時00分まで(予定)
+                          </p>
+                          <p class="notice-detail-item">
+                            <strong>場所：</strong>東金市東金790番地付近(PDE)所
+                          </p>
+                          <p class="notice-detail-item">
+                            <strong>断水戸数：</strong>約30戸
+                          </p>
+                          <p class="notice-detail-item">
+                            <strong>断水理由：</strong>水道管緊急漏水修理のため
+                          </p>
+                        </div>
+                        <p class="notice-text">
+                          断水地域の住民の皆様には、大変ご迷惑をおかけしております。
+                        </p>
+                        <p class="notice-contact">
+                          <strong>【連絡先】</strong><br />
+                          山武郡市広域水道企業団 施設課維持班<br />
+                          0475-55-7854
+                        </p>
+                        <p class="notice-additional">
+                          断水が解消した際には、ホームページにてお知らせいたしますが、使い始めは赤濁水や白濁水などが出る場合があります。その際は、しばらく蛇口で流して頂ければ解消いたします。
+                        </p>
+                        <p class="notice-area">
+                          影響範囲：東金市東金790番地付近(PDE)所
+                        </p>
+                      </div>
                     </div>
-                    <p class="notice-text">
-                      断水地域の住民の皆様には、大変ご迷惑をおかけしております。
-                    </p>
-                    <p class="notice-contact">
-                      <strong>【連絡先】</strong><br />
-                      山武郡市広域水道企業団 施設課維持班<br />
-                      0475-55-7854
-                    </p>
-                    <p class="notice-additional">
-                      断水が解消した際には、ホームページにてお知らせいたしますが、使い始めは赤濁水や白濁水などが出る場合があります。その際は、しばらく蛇口で流して頂ければ解消いたします。
-                    </p>
-                    <p class="notice-area">
-                      影響範囲：東金市東金790番地付近(PDE)所
-                    </p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </section>
+
+          <!-- お知らせセクション -->
+          <section class="news-section">
+            <div class="section-header">
+              <h2>お知らせ</h2>
+              <span class="section-subtitle">Information</span>
+            </div>
+
+            <div class="news-tabs">
+              <button class="tab-button active" data-tab="all">全て</button>
+              <button class="tab-button" data-tab="users">お客様へ</button>
+              <button class="tab-button" data-tab="business">
+                事業者の皆様へ
+              </button>
+            </div>
+
+            <div class="news-content">
+              <div class="news-list">
+                <div class="news-item">
+                  <div class="news-date">2025年01月15日</div>
+                  <div class="news-tags">
+                    <span class="tag featured">注目情報</span>
+                  </div>
+                  <div class="news-title">
+                    <a href="#">九十九里浜地域の水道施設点検結果について</a>
+                  </div>
+                </div>
+
+                <div class="news-item">
+                  <div class="news-date">2025年01月10日</div>
+                  <div class="news-tags">
+                    <span class="tag featured">注目情報</span>
+                    <span class="tag users">利用者</span>
+                  </div>
+                  <div class="news-title">
+                    <a href="#"
+                      >山武郡市広域水道企業団
+                      広報誌「みずのこころ」令和7年冬号を発行</a
+                    >
+                  </div>
+                </div>
+
+                <div class="news-item">
+                  <div class="news-date">2024年12月28日</div>
+                  <div class="news-tags">
+                    <span class="tag featured">注目情報</span>
+                    <span class="tag users">利用者</span>
+                  </div>
+                  <div class="news-title">
+                    <a href="#"
+                      >【千葉県道・市道】
+                      水道工事に伴う道路規制のお知らせ（九十九里町・山武市）</a
+                    >
+                  </div>
+                </div>
+                <div class="news-item">
+                  <div class="news-date">2025年01月15日</div>
+                  <div class="news-tags">
+                    <span class="tag featured">注目情報</span>
+                  </div>
+                  <div class="news-title">
+                    <a href="#">九十九里浜地域の水道施設点検結果について</a>
+                  </div>
+                </div>
+
+                <div class="news-item">
+                  <div class="news-date">2025年01月10日</div>
+                  <div class="news-tags">
+                    <span class="tag featured">注目情報</span>
+                    <span class="tag users">利用者</span>
+                  </div>
+                  <div class="news-title">
+                    <a href="#"
+                      >山武郡市広域水道企業団
+                      広報誌「みずのこころ」令和7年冬号を発行</a
+                    >
+                  </div>
+                </div>
+
+                <div class="news-item">
+                  <div class="news-date">2024年12月28日</div>
+                  <div class="news-tags">
+                    <span class="tag featured">注目情報</span>
+                    <span class="tag users">利用者</span>
+                  </div>
+                  <div class="news-title">
+                    <a href="#"
+                      >【千葉県道・市道】
+                      水道工事に伴う道路規制のお知らせ（九十九里町・山武市）</a
+                    >
+                  </div>
+                </div>
+                <div class="news-item">
+                  <div class="news-date">2025年01月15日</div>
+                  <div class="news-tags">
+                    <span class="tag featured">注目情報</span>
+                  </div>
+                  <div class="news-title">
+                    <a href="#">九十九里浜地域の水道施設点検結果について</a>
+                  </div>
+                </div>
+
+                <div class="news-item">
+                  <div class="news-date">2025年01月10日</div>
+                  <div class="news-tags">
+                    <span class="tag featured">注目情報</span>
+                    <span class="tag users">利用者</span>
+                  </div>
+                  <div class="news-title">
+                    <a href="#"
+                      >山武郡市広域水道企業団
+                      広報誌「みずのこころ」令和7年冬号を発行</a
+                    >
+                  </div>
+                </div>
+
+                <div class="news-item">
+                  <div class="news-date">2024年12月28日</div>
+                  <div class="news-tags">
+                    <span class="tag featured">注目情報</span>
+                    <span class="tag users">利用者</span>
+                  </div>
+                  <div class="news-title">
+                    <a href="#"
+                      >【千葉県道・市道】
+                      水道工事に伴う道路規制のお知らせ（九十九里町・山武市）</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="news-footer">
+                <button class="view-all-btn">
+                  一覧を見る
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
-
-      <!-- お知らせセクション -->
-      <section class="news-section">
-        <div class="section-header">
-          <h2>お知らせ</h2>
-          <span class="section-subtitle">Information</span>
-        </div>
-
-        <div class="news-tabs">
-          <button class="tab-button active" data-tab="all">全て</button>
-          <button class="tab-button" data-tab="users">お客様へ</button>
-          <button class="tab-button" data-tab="business">事業者の皆様へ</button>
-        </div>
-
-        <div class="news-content">
-          <div class="news-list">
-            <div class="news-item">
-              <div class="news-date">2025年01月15日</div>
-              <div class="news-tags">
-                <span class="tag featured">注目情報</span>
-              </div>
-              <div class="news-title">
-                <a href="#">九十九里浜地域の水道施設点検結果について</a>
-              </div>
-            </div>
-
-            <div class="news-item">
-              <div class="news-date">2025年01月10日</div>
-              <div class="news-tags">
-                <span class="tag featured">注目情報</span>
-                <span class="tag users">利用者</span>
-              </div>
-              <div class="news-title">
-                <a href="#"
-                  >山武郡市広域水道企業団
-                  広報誌「みずのこころ」令和7年冬号を発行</a
-                >
-              </div>
-            </div>
-
-            <div class="news-item">
-              <div class="news-date">2024年12月28日</div>
-              <div class="news-tags">
-                <span class="tag featured">注目情報</span>
-                <span class="tag users">利用者</span>
-              </div>
-              <div class="news-title">
-                <a href="#"
-                  >【千葉県道・市道】
-                  水道工事に伴う道路規制のお知らせ（九十九里町・山武市）</a
-                >
-              </div>
-            </div>
-            <div class="news-item">
-              <div class="news-date">2025年01月15日</div>
-              <div class="news-tags">
-                <span class="tag featured">注目情報</span>
-              </div>
-              <div class="news-title">
-                <a href="#">九十九里浜地域の水道施設点検結果について</a>
-              </div>
-            </div>
-
-            <div class="news-item">
-              <div class="news-date">2025年01月10日</div>
-              <div class="news-tags">
-                <span class="tag featured">注目情報</span>
-                <span class="tag users">利用者</span>
-              </div>
-              <div class="news-title">
-                <a href="#"
-                  >山武郡市広域水道企業団
-                  広報誌「みずのこころ」令和7年冬号を発行</a
-                >
-              </div>
-            </div>
-
-            <div class="news-item">
-              <div class="news-date">2024年12月28日</div>
-              <div class="news-tags">
-                <span class="tag featured">注目情報</span>
-                <span class="tag users">利用者</span>
-              </div>
-              <div class="news-title">
-                <a href="#"
-                  >【千葉県道・市道】
-                  水道工事に伴う道路規制のお知らせ（九十九里町・山武市）</a
-                >
-              </div>
-            </div>
-            <div class="news-item">
-              <div class="news-date">2025年01月15日</div>
-              <div class="news-tags">
-                <span class="tag featured">注目情報</span>
-              </div>
-              <div class="news-title">
-                <a href="#">九十九里浜地域の水道施設点検結果について</a>
-              </div>
-            </div>
-
-            <div class="news-item">
-              <div class="news-date">2025年01月10日</div>
-              <div class="news-tags">
-                <span class="tag featured">注目情報</span>
-                <span class="tag users">利用者</span>
-              </div>
-              <div class="news-title">
-                <a href="#"
-                  >山武郡市広域水道企業団
-                  広報誌「みずのこころ」令和7年冬号を発行</a
-                >
-              </div>
-            </div>
-
-            <div class="news-item">
-              <div class="news-date">2024年12月28日</div>
-              <div class="news-tags">
-                <span class="tag featured">注目情報</span>
-                <span class="tag users">利用者</span>
-              </div>
-              <div class="news-title">
-                <a href="#"
-                  >【千葉県道・市道】
-                  水道工事に伴う道路規制のお知らせ（九十九里町・山武市）</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="news-footer">
-            <button class="view-all-btn">
-              一覧を見る
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section class="jurisdiction-section">
-        <div class="section-header">
-          <h2>山武水道企業団と管轄地域</h2>
-        </div>
-        <div class="jurisdiction-container">
-          <div class="municipalities-box">
-            <h3>構成市町</h3>
-            <ul class="municipalities-list">
-              <li>東　金　市</li>
-              <li>山　武　市</li>
-              <li>大網白里市</li>
-              <li>九十九里町</li>
-              <li>横 芝 光 町</li>
-            </ul>
-          </div>
-          <div class="service-area-box">
-            <h3>給水区域</h3>
-            <div class="map-area">
-              <div class="map-placeholder">給水区域図</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
 
       <!-- 広告エリア -->
       <section class="ad-banner" id="adBanner">

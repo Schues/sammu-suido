@@ -1,0 +1,424 @@
+// ============================================
+// WordPressテーマ用スタイル
+// ============================================
+
+// 共通スタイルのインポート
+@import 'common';
+
+// ============================================
+// WordPress標準クラス
+// ============================================
+
+// WordPressの基本構造
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-header {
+  // ヘッダーはcommon.scssで定義
+}
+
+.site-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+
+.site-footer {
+  // フッターはcommon.scssで定義
+}
+
+// WordPressコンテンツエリア
+.content-area {
+  width: 100%;
+}
+
+// WordPress投稿・固定ページ
+.post,
+.page {
+  margin-bottom: 2rem;
+}
+
+.entry-header {
+  margin-bottom: 1.5rem;
+}
+
+.entry-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+}
+
+.entry-meta {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.entry-content {
+  line-height: 1.8;
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin: 2rem 0 1rem 0;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1.5rem 0 0.75rem 0;
+  }
+
+  ul,
+  ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+  }
+
+  blockquote {
+    border-left: 4px solid #4a90e2;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #666;
+  }
+}
+
+.entry-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+// WordPressサイドバー
+.sidebar {
+  // サイドバースタイル（必要に応じて追加）
+}
+
+.widget {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+
+  .widget-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #4a90e2;
+  }
+}
+
+// ============================================
+// WordPressブロックエディタ（Gutenberg）スタイル
+// ============================================
+
+// ブロックコンテナ
+.wp-block-group {
+  margin-bottom: 2rem;
+}
+
+.wp-block-columns {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.wp-block-column {
+  flex: 1;
+}
+
+// 見出しブロック
+.wp-block-heading {
+  margin: 1.5rem 0 1rem 0;
+  font-weight: bold;
+}
+
+// 段落ブロック
+.wp-block-paragraph {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+// リストブロック
+.wp-block-list {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+// 画像ブロック
+.wp-block-image {
+  margin: 1.5rem 0;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  figcaption {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+}
+
+// 引用ブロック
+.wp-block-quote {
+  border-left: 4px solid #4a90e2;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #666;
+}
+
+// ボタンブロック
+.wp-block-button {
+  margin: 1rem 0;
+
+  .wp-block-button__link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #4a90e2;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background: #357abd;
+    }
+  }
+}
+
+// テーブルブロック
+.wp-block-table {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0;
+  }
+
+  th {
+    background: #f8f9fa;
+    font-weight: bold;
+  }
+}
+
+// ギャラリーブロック
+.wp-block-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+// カバーブロック
+.wp-block-cover {
+  margin: 2rem 0;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .wp-block-cover__inner-container {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+  }
+}
+
+// ============================================
+// WordPressナビゲーションメニュー
+// ============================================
+
+// メインナビゲーション（common.scssで定義済み）
+// 追加のスタイルが必要な場合はここに記述
+
+// ============================================
+// WordPressコメント
+// ============================================
+
+.comments-area {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.comment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  .comment {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  .comment-author {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .comment-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .comment-content {
+    line-height: 1.6;
+  }
+}
+
+.comment-respond {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+// ============================================
+// WordPress検索フォーム
+// ============================================
+
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+
+  .search-field {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .search-submit {
+    padding: 0.5rem 1rem;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background: #357abd;
+    }
+  }
+}
+
+// ============================================
+// WordPressページネーション
+// ============================================
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+
+  .page-numbers {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+
+    &:hover,
+    &.current {
+      background: #4a90e2;
+      color: white;
+      border-color: #4a90e2;
+    }
+  }
+}
+
+// ============================================
+// WordPressレスポンシブ対応
+// ============================================
+
+@media (max-width: 768px) {
+  .site-main {
+    padding: 1rem;
+  }
+
+  .wp-block-columns {
+    flex-direction: column;
+  }
+
+  .wp-block-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+// ============================================
+// WordPress管理画面用（必要に応じて）
+// ============================================
+
+// エディタスタイル（必要に応じて追加）
+// .editor-styles-wrapper {
+//   // エディタ内のスタイル
+// }
