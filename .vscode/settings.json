@@ -14,15 +14,6 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "sass.compile": {
-    "outputDir": "css",
-    "sourceMap": true,
-    "includePath": ["scss"],
-    "precision": 5,
-    "indentType": "space",
-    "indentWidth": 2,
-    "linefeed": "lf"
-  },
   "liveSassCompile.settings.formats": [
     {
       "format": "expanded",
@@ -31,8 +22,19 @@
       "savePathSegmentKeys": null
     }
   ],
+  "liveSassCompile.settings.generateMap": true,
+  "liveSassCompile.settings.autoprefix": [
+    "> 1%",
+    "last 2 versions"
+  ],
   "liveSassCompile.settings.includeItems": [
     "scss/**/*.scss"
   ],
+  "liveSassCompile.settings.excludeList": [
+    "**/node_modules/**",
+    ".vscode/**"
+  ],
+  "liveSassCompile.settings.showOutputWindow": false,
+  "liveSassCompile.settings.watchOnLaunch": true,
   "liveServer.settings.port": 5501
 }

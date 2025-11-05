@@ -1,7 +1,12 @@
 {
   "recommendations": [
-    "syler.sass-indented",
+    "esbenp.prettier-vscode",
     "glenn2223.live-sass",
-    "ritwickdey.liveserver"
+    "ritwickdey.liveserver",
+    "mrmlnc.vscode-scss"
+  ],
+  "unwantedRecommendations": [
+    "syler.sass-indented",
+    "robinbentley.sass-indented"
   ]
 }
