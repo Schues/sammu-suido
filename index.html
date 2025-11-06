@@ -510,7 +510,24 @@
             <div class="service-area-box">
               <h3>給水区域</h3>
               <div class="map-area">
-                <div class="map-placeholder">給水区域図</div>
+                <img src="images/map_dist-area.gif" alt="給水区域図" />
+              </div>
+            </div>
+            <div class="service-area-box">
+              <h3>
+                マスコットキャラクター<span class="character-name"
+                  >さんすいちゃん</span
+                >
+              </h3>
+              <div class="map-area">
+                <img src="images/illust_sansui-chan2.PNG" alt="給水区域図" />
+              </div>
+              <div>
+                <h4>「さんすいちゃん」の由来</h4>
+                <p>
+                  皆さんに愛嬌をふりまく：散水<br />
+                  山武水道企業団の名称：　山水
+                </p>
               </div>
             </div>
           </div>
@@ -537,42 +554,62 @@
                   </div>
                   <h2>緊急情報</h2>
                 </div>
-                <div class="emergency-content">
+                <div class="emergency-content" data-source="wp-emergency">
                   <div class="emergency-notice">
-                    <div class="emergency-notice-active">
+                    <!-- アクティブな緊急情報（WP投稿から動的に読み込む予定） -->
+                    <div
+                      class="emergency-notice-active"
+                      style="display: none"
+                      data-post-id=""
+                    >
                       <div class="notice-content">
-                        <h3>断水のお知らせ</h3>
-                        <p class="notice-date">令和7年10月2日 13:00更新</p>
-                        <div class="notice-details">
-                          <p class="notice-detail-item">
-                            <strong>日時：</strong>令和7年10月2日(木)
-                            13時00分~16時00分まで(予定)
+                        <h3 class="notice-title" data-field="title">
+                          断水のお知らせ
+                        </h3>
+                        <p class="notice-date" data-field="date">
+                          令和7年10月2日 13:00更新
+                        </p>
+                        <div class="notice-details" data-field="details">
+                          <p class="notice-detail-item" data-field="datetime">
+                            <strong>日時：</strong
+                            ><span class="detail-value"></span>
                           </p>
-                          <p class="notice-detail-item">
-                            <strong>場所：</strong>東金市東金790番地付近(PDE)所
+                          <p class="notice-detail-item" data-field="location">
+                            <strong>場所：</strong
+                            ><span class="detail-value"></span>
                           </p>
-                          <p class="notice-detail-item">
-                            <strong>断水戸数：</strong>約30戸
+                          <p
+                            class="notice-detail-item"
+                            data-field="affected-households"
+                          >
+                            <strong>断水戸数：</strong
+                            ><span class="detail-value"></span>
                           </p>
-                          <p class="notice-detail-item">
-                            <strong>断水理由：</strong>水道管緊急漏水修理のため
+                          <p class="notice-detail-item" data-field="reason">
+                            <strong>断水理由：</strong
+                            ><span class="detail-value"></span>
                           </p>
                         </div>
-                        <p class="notice-text">
+                        <p class="notice-text" data-field="text">
                           断水地域の住民の皆様には、大変ご迷惑をおかけしております。
                         </p>
-                        <p class="notice-contact">
+                        <p class="notice-contact" data-field="contact">
                           <strong>【連絡先】</strong><br />
-                          山武郡市広域水道企業団 施設課維持班<br />
-                          0475-55-7854
+                          <span class="contact-value"></span>
                         </p>
-                        <p class="notice-additional">
+                        <p class="notice-additional" data-field="additional">
                           断水が解消した際には、ホームページにてお知らせいたしますが、使い始めは赤濁水や白濁水などが出る場合があります。その際は、しばらく蛇口で流して頂ければ解消いたします。
                         </p>
-                        <p class="notice-area">
-                          影響範囲：東金市東金790番地付近(PDE)所
+                        <p class="notice-area" data-field="area">
+                          影響範囲：<span class="area-value"></span>
                         </p>
                       </div>
+                    </div>
+                    <!-- お知らせがない状態 -->
+                    <div class="emergency-notice-empty">
+                      <p class="empty-message">
+                        現在、緊急のお知らせはございません。
+                      </p>
                     </div>
                   </div>
                 </div>

@@ -235,7 +235,7 @@ main {
       text-align: center;
       z-index: 2;
       width: 100%;
-      max-width: 900px;
+      // max-width: 900px;
       padding: 0 2rem;
 
       h1 {
@@ -294,6 +294,21 @@ main {
     background: $background-color;
     border: $border-width-thick solid $emergency-color;
     overflow: hidden;
+
+    // 緊急情報がない時はアイコンを非表示（:has()セレクター使用）
+    &:has(.emergency-notice-empty) {
+      .emergency-icon {
+        display: none !important;
+      }
+    }
+
+    // 緊急情報がある時のみアイコンを表示
+    // WP移行時にJavaScriptで.has-emergencyクラスを追加して制御することも可能
+    &.has-emergency {
+      .emergency-icon {
+        display: flex !important;
+      }
+    }
   }
 
   .emergency-header {
@@ -309,21 +324,6 @@ main {
       text-align: center;
     }
 
-    .emergency-icon {
-      width: 48px;
-      height: 48px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-
-      svg {
-        color: white;
-      }
-    }
-
     h2 {
       margin: 0;
       font-size: $font-size-xxl;
@@ -336,8 +336,24 @@ main {
     }
   }
 
+  .emergency-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: none; // デフォルトは非表示
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    @include transition();
+
+    svg {
+      color: white;
+    }
+  }
+
   .emergency-content {
-    padding: $spacing-xl $spacing-lg;
+    // padding: $spacing-xl $spacing-lg;
 
     @include media-sm {
       padding: $spacing-md $spacing-sm;
@@ -717,6 +733,7 @@ main {
 
   .news-content {
     @include card;
+    border-radius: 0; // border-radiusを削除
     padding: $spacing-lg;
 
     .news-list {
@@ -994,7 +1011,7 @@ main {
   .ad-container {
     max-width: $container-max-width;
     margin: 0 auto;
-    padding: $spacing-md $spacing-lg $spacing-lg $spacing-lg;
+    padding: $spacing-sm $spacing-lg $spacing-lg $spacing-sm;
 
     h3 {
       margin: 0 0 $spacing-sm 0;
@@ -1022,7 +1039,7 @@ main {
         .ad-placeholder {
           // background: #f0f0f0;
           // border: 2px dashed #ccc;
-          padding: $spacing-lg $spacing-sm;
+          // padding: $spacing-lg $spacing-sm;
           text-align: center;
           color: $text-color-light;
           font-size: $font-size-xs;
@@ -1153,6 +1170,7 @@ main {
 
   .municipalities-box {
     @include card;
+    border-radius: 0; // border-radiusを削除
     border: $border-width-thick solid $border-color-light;
     padding: $spacing-md;
 
@@ -1199,6 +1217,7 @@ main {
 
   .service-area-box {
     @include card;
+    border-radius: 0; // border-radiusを削除
     border: $border-width-thick solid $border-color-light;
     padding: $spacing-md;
     @include flex-column;
@@ -1214,14 +1233,31 @@ main {
       margin: 0 0 $spacing-md 0;
       padding-bottom: 0.75rem;
       border-bottom: $border-width-thick solid $accent-color;
+
+      // マスコットキャラクターのh3は小さく、「さんすいちゃん」を目立たせる
+      .character-name {
+        font-size: $font-size-xxxl;
+        font-weight: bold;
+        color: $accent-color;
+        display: inline-block;
+      }
+
+      // 「マスコットキャラクター」のテキストを小さく
+      &:has(.character-name) {
+        font-size: $font-size-base;
+
+        @include media-sm {
+          font-size: $font-size-sm;
+        }
+      }
     }
 
     .map-area {
       width: 100%;
       flex: 1;
       overflow: hidden;
-      border-radius: $border-radius-md;
-      background: $background-color-light;
+      border-radius: 0; // border-radiusを削除
+      // background: $background-color-light;
       @include flex-center;
 
       @include media-sm {
@@ -1232,7 +1268,7 @@ main {
         background: #e0e0e0;
         color: #999;
         padding: $spacing-xl $spacing-lg;
-        border-radius: $border-radius-md;
+        border-radius: 0; // border-radiusを削除
         text-align: center;
         font-size: $font-size-xl;
         width: 100%;
@@ -1253,6 +1289,22 @@ main {
         display: block;
         object-fit: contain;
       }
+    }
+
+    h4 {
+      font-size: $font-size-lg;
+      text-align: center;
+      margin: $spacing-md 0 $spacing-sm 0;
+      color: $text-color;
+      font-weight: bold;
+
+      @include media-sm {
+        font-size: $font-size-base;
+      }
+    }
+
+    p {
+      padding-inline: 5%;
     }
   }
 }
