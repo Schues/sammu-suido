@@ -2364,6 +2364,7 @@ main {
   display: block;
   -o-object-fit: contain;
      object-fit: contain;
+  padding-inline: 15%;
 }
 .jurisdiction-aside .service-area-box h4 {
   font-size: 1.125rem;
