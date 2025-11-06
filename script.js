@@ -56,13 +56,41 @@ function changeLanguage(lang) {
 }
 
 // ===== 音声読み上げ =====
+// 発音置換辞書（読み上げ時の発音を修正）
+function applyPronunciationCorrection(text) {
+  // 発音置換のマッピング
+  const pronunciationMap = {
+    山武: 'サンブ',
+    山武郡: 'サンブグン',
+    山武市: 'サンブシ',
+    山武郡市: 'サンブグンシ',
+    山武郡市広域水道企業団: 'サンブグンシコウイキスイドウキギョウダン',
+  };
+
+  let correctedText = text;
+
+  // 長い文字列から順に置換（部分一致を防ぐため）
+  Object.keys(pronunciationMap)
+    .sort((a, b) => b.length - a.length) // 長い順にソート
+    .forEach(key => {
+      const regex = new RegExp(key, 'g');
+      correctedText = correctedText.replace(regex, pronunciationMap[key]);
+    });
+
+  return correctedText;
+}
+
 function readAll() {
   const elements = document.querySelectorAll('h1, h2, p, li');
   let text = '';
   elements.forEach(el => {
     text += el.innerText + '。';
   });
-  const utterance = new SpeechSynthesisUtterance(text);
+
+  // 発音修正を適用
+  const correctedText = applyPronunciationCorrection(text);
+
+  const utterance = new SpeechSynthesisUtterance(correctedText);
   utterance.lang = 'ja-JP';
   speechSynthesis.speak(utterance);
 }
@@ -84,13 +112,95 @@ function initMegaMenu() {
   const navItems = document.querySelectorAll('.nav-item');
   const header = document.querySelector('header');
 
+  // ヘッダー下のスペーサー要素
+  let headerSpacer = null;
+
+  // メガメニューの表示状態を追跡
+  let isMegaMenuActive = false;
+
+  // リサイズイベントのデバウンス用タイマー
+  let resizeTimer = null;
+
+  // スペーサーの高さを更新する関数
+  function updateSpacerHeight() {
+    // メガメニューが非表示またはスペーサーが存在しない場合は何もしない
+    if (!isMegaMenuActive || !headerSpacer || !header) return;
+
+    // ヘッダーの高さを取得（fixedになった後も正確な高さを取得）
+    // requestAnimationFrameでレイアウトが確定してから取得
+    requestAnimationFrame(() => {
+      const headerHeight = header.offsetHeight;
+      if (headerSpacer) {
+        headerSpacer.style.height = headerHeight + 'px';
+      }
+    });
+  }
+
+  // リサイズ時のデバウンス処理付き更新関数
+  function handleResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      updateSpacerHeight();
+    }, 150); // 150msのデバウンス
+  }
+
   // メガメニューの状態を管理する関数
   function updateMegaMenuState() {
     const activeMenus = document.querySelectorAll('.mega-menu.active');
+
     if (activeMenus.length > 0) {
-      header.classList.add('fixed');
+      // メガメニューが表示される場合
+      if (!isMegaMenuActive) {
+        isMegaMenuActive = true;
+
+        // ヘッダーの高さを取得（fixedになる前）
+        const headerHeight = header ? header.offsetHeight : 0;
+
+        // ヘッダー下にスペーサーを追加（まだ存在しない場合）
+        if (!headerSpacer && header) {
+          headerSpacer = document.createElement('div');
+          headerSpacer.id = 'header-spacer';
+          headerSpacer.style.height = headerHeight + 'px';
+          headerSpacer.style.width = '100%';
+          headerSpacer.style.display = 'block';
+          // ヘッダーの直後に挿入
+          header.insertAdjacentElement('afterend', headerSpacer);
+        }
+
+        // ヘッダーを固定
+        if (header) {
+          header.classList.add('fixed');
+        }
+
+        // スペーサーの高さを更新（fixedになった後の正確な高さ）
+        updateSpacerHeight();
+
+        // ウィンドウリサイズ時の対応（デバウンス付き）
+        window.addEventListener('resize', handleResize, { passive: true });
+      } else {
+        // 既に表示中の場合も高さを再計算（ヘッダー内要素が変更された可能性）
+        updateSpacerHeight();
+      }
     } else {
-      header.classList.remove('fixed');
+      // メガメニューが非表示になる場合
+      if (isMegaMenuActive) {
+        isMegaMenuActive = false;
+
+        // スペーサーを削除
+        if (headerSpacer) {
+          headerSpacer.remove();
+          headerSpacer = null;
+        }
+
+        // ヘッダーのfixedを解除
+        if (header) {
+          header.classList.remove('fixed');
+        }
+
+        // リサイズイベントリスナーを削除（メモリリーク防止）
+        window.removeEventListener('resize', handleResize);
+        clearTimeout(resizeTimer);
+      }
     }
   }
 
@@ -104,14 +214,16 @@ function initMegaMenu() {
           menu.classList.remove('active');
         });
 
-        // メガメニューの位置を調整
-        const mainNav = document.querySelector('.main-nav');
-        const navRect = mainNav.getBoundingClientRect();
-        megaMenu.style.top = navRect.bottom + window.scrollY + 'px';
-
         // 現在のメガメニューを表示
         megaMenu.classList.add('active');
         updateMegaMenuState();
+
+        // メガメニューの位置を調整（ヘッダー固定後に実行）
+        requestAnimationFrame(() => {
+          const mainNav = document.querySelector('.main-nav');
+          const navRect = mainNav.getBoundingClientRect();
+          megaMenu.style.top = navRect.bottom + window.scrollY + 'px';
+        });
       });
 
       // メガメニュー内でのマウス移動時は表示を維持
